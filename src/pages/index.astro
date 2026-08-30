@@ -1,17 +1,677 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Quiz from '../components/Quiz.astro';
 
+const pillars = [
+  {
+    title: 'Explora',
+    description: 'Descubre lugares y espacios históricos a través de rutas activas y fragmentos de memoria que emergen en el paisaje urbano.',
+  },
+  {
+    title: 'Resuelve',
+    description: 'Conoce la historia mediante retos, enigmas y misterios que transforman cada esquina en una pieza del relato colectivo.',
+  },
+  {
+    title: 'Descubre',
+    description: 'Convierte cada visita en una experiencia viva: guarda recuerdos, comparte hallazgos y vive la ciudad como un archivo abierto.',
+  },
+];
+
+const roles = [
+  {
+    title: 'Camino del Explorador',
+    subtitle: 'Exploración activa por la ciudad',
+    levels: ['Ruinas', 'Velo', 'Criptas', 'Mictlán de Sendas'],
+  },
+  {
+    title: 'Camino del Cronista',
+    subtitle: 'Investiga, escribe y guarda',
+    levels: ['Vestigios', 'Umbral', 'Códice', 'Palimpsesto', 'Legendarium'],
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>LandingTlalliCode</title>
-	</head>
-	<body>
-		<h1>Hello, World!</h1>
-	</body>
-</html>
+<Layout title="Nehnemi | Convirtiendo datos históricos en experiencias" description="Landing page y quiz de Nehnemi by Tlallicode. Explora la historia de Guadalajara con una experiencia de realidad mixta y misterios históricos.">
+  <main class="page-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <span class="brand-mark">N</span>
+        <span>Nehnemi</span>
+      </div>
+      <nav class="topnav" aria-label="Navegación principal">
+        <a href="#pilares">Cómo funciona</a>
+        <a href="#roles">Caminos</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#newsletter">Newsletter</a>
+      </nav>
+      <a class="nav-cta" href="#quiz">Jugar el Demo</a>
+    </header>
+
+    <section class="hero section-shell" id="hero">
+      <div class="hero-copy">
+        <span class="hero-tag">by Tlallicode</span>
+        <h1>Convirtiendo datos históricos en experiencias.</h1>
+        <p>
+          Una experiencia de exploración urbana que utiliza juegos, historias y tecnología para
+          descubrir la cultura y el patrimonio de nuestros espacios cotidianos. Una capa de magia
+          sobre el mundo real.
+        </p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#quiz">Descubre el Misterio</a>
+          <a class="secondary-button" href="#pilares">Cómo funciona</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Visualización narrativa de la comunidad de cronistas">
+        <div class="visual-card visual-card--main">
+          <span class="badge">Guadalajara</span>
+          <h2>Sociedad Secreta de Cronistas</h2>
+          <p>Fragmentos, ecos y rutas ocultas en la ciudad.</p>
+        </div>
+        <div class="visual-card visual-card--meta">
+          <span>Mapa vivo</span>
+          <strong>24 rutas activas</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="pilares">
+      <div class="section-heading">
+        <span class="eyebrow">¿Cómo funciona?</span>
+        <h2>Los 3 pilares de la experiencia</h2>
+      </div>
+
+      <div class="pillars-grid">
+        {pillars.map((pillar) => (
+          <article class="pillar-card">
+            <div class="pillar-icon">{pillar.title.slice(0, 1)}</div>
+            <h3>{pillar.title}</h3>
+            <p>{pillar.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section-shell" id="roles">
+      <div class="section-heading">
+        <span class="eyebrow">Elige tu camino</span>
+        <h2>Ascenso de rango y mecánicas de juego</h2>
+      </div>
+
+      <div class="roles-grid">
+        {roles.map((role) => (
+          <article class="role-card">
+            <p class="role-label">{role.subtitle}</p>
+            <h3>{role.title}</h3>
+            <ul>
+              {role.levels.map((level) => (
+                <li>{level}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <Quiz />
+
+    <section class="section-shell newsletter-section" id="newsletter">
+      <div class="newsletter-context">
+        <span class="eyebrow">Newsletter</span>
+        <h2>¡Únete a la sociedad secreta de investigadores!</h2>
+        <p>
+          Suscríbete a nuestra newsletter para recibir actualizaciones exclusivas sobre el desarrollo de
+          Nehnemi, historias inéditas de Guadalajara y ser el primero en probar la versión Beta.
+        </p>
+      </div>
+
+      <form class="newsletter-form" id="newsletter-form" novalidate>
+        <label>
+          <span>Tu nombre</span>
+          <input type="text" name="name" placeholder="Escribe tu nombre" required />
+        </label>
+        <label>
+          <span>Tu correo electrónico</span>
+          <input type="email" name="email" placeholder="correo@ejemplo.com" required />
+        </label>
+        <button type="submit" class="primary-button">Suscribirme al Desarrollo</button>
+        <p class="form-status" id="newsletter-message" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div>
+        <div class="brand-block footer-brand">
+          <span class="brand-mark">N</span>
+          <span>Nehnemi</span>
+        </div>
+        <p>Fomentando iniciativas con impacto social, cultural y tecnológico.</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <h3>Redes</h3>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">X / Twitter</a></li>
+            <li><a href="#">YouTube</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Alianzas</h3>
+          <ul>
+            <li><a href="#">Gobierno</a></li>
+            <li><a href="#">Instituciones Educativas</a></li>
+            <li><a href="#">Marcas</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 Tlallicode</span>
+      <span>Nehnemi x Tlallicode</span>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.querySelector<HTMLFormElement>('#newsletter-form');
+    const message = document.querySelector('#newsletter-message');
+
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const payload = {
+        name: String(formData.get('name') ?? '').trim(),
+        email: String(formData.get('email') ?? '').trim(),
+      };
+
+      if (!payload.name || !payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+        if (message) {
+          message.textContent = 'Por favor, completa tu nombre y un correo electrónico válido.';
+          message.className = 'form-status error';
+        }
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(result.error || 'No pudimos procesar tu suscripción.');
+        }
+
+        if (message) {
+          message.textContent = result.message || '¡Gracias por unirte!';
+          message.className = 'form-status success';
+        }
+        form.reset();
+      } catch (error) {
+        if (message) {
+          message.textContent = error instanceof Error ? error.message : 'Hubo un problema inesperado.';
+          message.className = 'form-status error';
+        }
+      }
+    });
+  </script>
+</Layout>
+
+<style>
+  .page-shell {
+    width: min(1200px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding-bottom: 3rem;
+  }
+
+  .section-shell {
+    padding: 2rem 0 3rem;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: min(1200px, calc(100% - 2rem));
+    margin: 1rem auto 0;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 18px;
+    backdrop-filter: blur(18px);
+    background: rgba(26, 22, 18, 0.78);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+  }
+
+  .brand-block {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: 'Cinzel', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--sepia);
+  }
+
+  .brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.08));
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    color: var(--sepia-strong);
+    font-size: 1.05rem;
+  }
+
+  .topnav {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+  }
+
+  .topnav a:hover {
+    color: var(--sepia);
+  }
+
+  .nav-cta,
+  .primary-button,
+  .secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0.8rem 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 800;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-cta,
+  .primary-button {
+    background: linear-gradient(135deg, var(--sepia-strong), #b18a1a);
+    color: #201a16;
+    box-shadow: 0 10px 24px rgba(212, 175, 55, 0.18);
+  }
+
+  .secondary-button {
+    background: transparent;
+    color: var(--sepia);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+  }
+
+  .nav-cta:hover,
+  .primary-button:hover,
+  .secondary-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    align-items: center;
+    padding-top: 3rem;
+  }
+
+  .hero-copy {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .hero-tag,
+  .eyebrow {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.38rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.28);
+    color: var(--sepia-strong);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    line-height: 0.95;
+    max-width: 620px;
+  }
+
+  .hero p {
+    max-width: 620px;
+    font-size: 1.08rem;
+    color: var(--ink-muted);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero-visual {
+    display: grid;
+    gap: 1rem;
+    min-height: 440px;
+    background:
+      linear-gradient(180deg, rgba(212, 175, 55, 0.08), rgba(26, 22, 18, 0.08)),
+      radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 30%),
+      rgba(17, 13, 11, 0.72);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 32px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-visual::before {
+    content: "";
+    position: absolute;
+    inset: 12% 8% 20% 8%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15), transparent 62%);
+  }
+
+  .visual-card {
+    position: relative;
+    z-index: 1;
+    border-radius: 24px;
+    padding: 1.2rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(31, 25, 20, 0.7);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  .visual-card--main {
+    margin-top: auto;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .badge {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(212, 175, 55, 0.08);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    color: var(--sepia-strong);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .visual-card h2 {
+    margin-top: 1rem;
+    font-size: clamp(1.8rem, 2vw, 2.5rem);
+  }
+
+  .visual-card p,
+  .visual-card span,
+  .visual-card strong {
+    color: var(--ink-muted);
+  }
+
+  .visual-card--meta {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-left: auto;
+  }
+
+  .section-heading {
+    display: grid;
+    gap: 0.6rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(2rem, 3vw, 2.9rem);
+  }
+
+  .pillars-grid,
+  .roles-grid {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .pillar-card,
+  .role-card,
+  .newsletter-form {
+    background: rgba(33, 27, 22, 0.88);
+    border: 1px solid rgba(212, 175, 55, 0.16);
+    border-radius: 22px;
+    padding: 1.4rem;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+  }
+
+  .pillar-card {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .pillar-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.8rem;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(212, 175, 55, 0.05));
+    color: var(--sepia-strong);
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  .pillar-card h3,
+  .role-card h3 {
+    font-size: 1.7rem;
+  }
+
+  .role-card {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .role-label {
+    color: var(--sepia-strong);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+  }
+
+  .role-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .role-card li {
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    background: rgba(212, 175, 55, 0.04);
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+  }
+
+  .newsletter-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .newsletter-context {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .newsletter-context h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+  }
+
+  .newsletter-form {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .newsletter-form label {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .newsletter-form span {
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 0.92rem;
+  }
+
+  .newsletter-form input {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .newsletter-form input:focus {
+    outline: 2px solid rgba(212, 175, 55, 0.4);
+    outline-offset: 2px;
+  }
+
+  .form-status {
+    min-height: 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink-muted);
+  }
+
+  .form-status.success {
+    color: var(--success);
+  }
+
+  .form-status.error {
+    color: var(--danger);
+  }
+
+  .site-footer {
+    width: min(1200px, calc(100% - 2rem));
+    margin: 0 auto 2rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    padding-top: 1.5rem;
+  }
+
+  .footer-top,
+  .footer-bottom {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .footer-top {
+    margin-bottom: 1.2rem;
+  }
+
+  .footer-brand {
+    margin-bottom: 0.85rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-links h3 {
+    margin-bottom: 0.75rem;
+    font-size: 0.96rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--sepia-strong);
+  }
+
+  .footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+    color: var(--ink-muted);
+  }
+
+  .footer-bottom {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.12);
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 900px) {
+    .pillars-grid,
+    .roles-grid,
+    .newsletter-section,
+    .hero {
+      grid-template-columns: 1fr;
+    }
+
+    .topnav {
+      display: none;
+    }
+
+    .topbar {
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .topbar {
+      padding: 0.9rem 1rem;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    .hero {
+      padding-top: 2.2rem;
+    }
+
+    .footer-top,
+    .footer-bottom {
+      flex-direction: column;
+    }
+  }
+</style>

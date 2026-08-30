@@ -1,0 +1,111 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Nehnemi | Descubre Guadalajara a través de la historia',
+  description = 'Nehnemi by Tlallicode transforma Guadalajara en una experiencia de exploración histórica, misterio y cultura con realidad mixta.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Nehnemi, Tlallicode, Guadalajara, historia, exploración, realidad mixta, patrimonio" />
+    <meta name="theme-color" content="#1A1612" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/og-nehnemi.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg-deep: #1a1612;
+    --bg-panel: rgba(38, 31, 24, 0.9);
+    --bg-panel-soft: rgba(58, 47, 35, 0.82);
+    --sepia: #f2dfb0;
+    --sepia-strong: #d4af37;
+    --sepia-soft: #b3924c;
+    --ink: #f9f2dd;
+    --ink-muted: #d9c8a7;
+    --line: rgba(212, 175, 55, 0.28);
+    --success: #9ad39d;
+    --danger: #d98d5c;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--bg-deep);
+  }
+
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at top, rgba(212, 175, 55, 0.14), transparent 30%),
+      linear-gradient(180deg, #18130f 0%, #1a1612 50%, #120f0d 100%);
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .display {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.03em;
+    margin: 0;
+    color: var(--sepia);
+  }
+
+  p {
+    margin: 0;
+    color: var(--ink-muted);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

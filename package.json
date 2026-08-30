@@ -12,6 +12,7 @@
     "astro": "./node_modules/.bin/astro"
   },
   "dependencies": {
+    "@astrojs/vercel": "^11.0.8",
     "astro": "^7.2.9"
   },
   "allowScripts": {

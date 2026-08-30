@@ -1,0 +1,553 @@
+<section class="quiz-block" id="quiz" aria-label="Quiz interactivo de misterio histórico">
+  <div class="quiz-shell">
+    <div class="quiz-header">
+      <span class="eyebrow">MISTERIO HISTÓRICO</span>
+      <h2>El Misterio del Reloj</h2>
+    </div>
+
+    <div class="quiz-stage" data-quiz-stage>
+      <div class="screen screen--start">
+        <p class="screen-kicker">30 de enero de 1915 · Guadalajara</p>
+        <h3>Una marca, una historia por descubrir.</h3>
+        <p>
+          En plena Revolución Mexicana, un albazo sorprendió a la ciudad. Entre el ruido de los
+          fusiles, un solo disparo dejó su huella en lo alto de un edificio. Hoy, más de un siglo
+          después, la marca sigue ahí. Tu misión es reconstruir la historia.
+        </p>
+        <button class="primary-button" data-action="start">Iniciar investigación</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .quiz-block {
+    padding: 2rem 1.25rem 5rem;
+  }
+
+  .quiz-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, rgba(26, 20, 15, 0.96), rgba(48, 39, 30, 0.96));
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 1.4rem;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  }
+
+  .quiz-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    padding: 0.38rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    background: rgba(212, 175, 55, 0.08);
+    color: var(--sepia-strong);
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .quiz-header h2 {
+    font-size: clamp(1.5rem, 2vw, 2.35rem);
+  }
+
+  .quiz-stage {
+    min-height: 420px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .screen {
+    width: 100%;
+    display: grid;
+    gap: 1.2rem;
+    background: rgba(17, 13, 11, 0.65);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    border-radius: 20px;
+    padding: 1.5rem;
+  }
+
+  .screen--start h3 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.15;
+  }
+
+  .screen-kicker {
+    color: var(--sepia-strong);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.76rem;
+  }
+
+  .screen p {
+    font-size: 1.04rem;
+    max-width: 64ch;
+    color: var(--ink-muted);
+  }
+
+  .primary-button,
+  .quiz-option,
+  .ghost-button,
+  .next-button,
+  .cta-link {
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    font: inherit;
+  }
+
+  .primary-button,
+  .next-button,
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--sepia-strong), #b18a1a);
+    color: #1a1612;
+    padding: 0.9rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    width: fit-content;
+    box-shadow: 0 12px 24px rgba(212, 175, 55, 0.2);
+  }
+
+  .primary-button:hover,
+  .next-button:hover,
+  .cta-link:hover,
+  .quiz-option:hover {
+    transform: translateY(-1px);
+  }
+
+  .question-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 0.5rem;
+  }
+
+  .quiz-option {
+    position: relative;
+    text-align: left;
+    padding: 1rem 1rem 1rem 3.1rem;
+    border-radius: 18px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--ink);
+    min-height: 88px;
+    font-size: 1rem;
+  }
+
+  .quiz-option::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    font-weight: 800;
+    color: var(--sepia-strong);
+  }
+
+  .quiz-option.is-correct {
+    background: rgba(154, 211, 157, 0.14);
+    border-color: rgba(154, 211, 157, 0.6);
+    box-shadow: inset 0 0 0 1px rgba(154, 211, 157, 0.35);
+  }
+
+  .quiz-option.is-wrong {
+    background: rgba(217, 141, 92, 0.08);
+    border-color: rgba(217, 141, 92, 0.44);
+  }
+
+  .quiz-option:disabled {
+    opacity: 1;
+    cursor: default;
+  }
+
+  .feedback {
+    display: none;
+    margin-top: 0.5rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-weight: 700;
+    border: 1px solid transparent;
+  }
+
+  .feedback.is-visible {
+    display: block;
+  }
+
+  .feedback.success {
+    color: #dff7dd;
+    background: rgba(154, 211, 157, 0.12);
+    border-color: rgba(154, 211, 157, 0.32);
+  }
+
+  .feedback.error {
+    color: #fce8d9;
+    background: rgba(217, 141, 92, 0.08);
+    border-color: rgba(217, 141, 92, 0.32);
+  }
+
+  .quiz-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .clue-box {
+    padding: 1rem 1.1rem;
+    border-radius: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    background: rgba(212, 175, 55, 0.04);
+    color: var(--sepia);
+    font-style: italic;
+  }
+
+  .revelation-card {
+    padding: 1.4rem;
+    border-radius: 18px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    background: rgba(17, 13, 11, 0.72);
+  }
+
+  .revelation-card h3 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 0.8rem;
+  }
+
+  .clock-illustration {
+    position: relative;
+    width: min(100%, 230px);
+    aspect-ratio: 1;
+    margin: 1.2rem auto;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.28), rgba(22, 17, 13, 0.95));
+    border: 3px solid rgba(212, 175, 55, 0.4);
+    box-shadow: inset 0 0 0 12px rgba(212, 175, 55, 0.08);
+  }
+
+  .clock-illustration::before,
+  .clock-illustration::after {
+    content: "";
+    position: absolute;
+    inset: 12% 12%;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.24);
+  }
+
+  .clock-illustration::after {
+    inset: 21% 21%;
+  }
+
+  .clock-mark {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 2px;
+    height: 24%;
+    background: rgba(212, 175, 55, 0.7);
+    transform-origin: bottom center;
+  }
+
+  .clock-mark[data-index="11"] { transform: translate(-50%, -100%) rotate(90deg); }
+  .clock-mark[data-index="12"] { transform: translate(-50%, -100%) rotate(0deg); }
+  .clock-mark[data-index="1"] { transform: translate(-50%, -100%) rotate(30deg); }
+  .clock-mark[data-index="2"] { transform: translate(-50%, -100%) rotate(60deg); }
+  .clock-mark[data-index="3"] { transform: translate(-50%, -100%) rotate(90deg); }
+  .clock-mark[data-index="4"] { transform: translate(-50%, -100%) rotate(120deg); }
+  .clock-mark[data-index="5"] { transform: translate(-50%, -100%) rotate(150deg); }
+  .clock-mark[data-index="6"] { transform: translate(-50%, -100%) rotate(180deg); }
+  .clock-mark[data-index="7"] { transform: translate(-50%, -100%) rotate(210deg); }
+  .clock-mark[data-index="8"] { transform: translate(-50%, -100%) rotate(240deg); }
+  .clock-mark[data-index="9"] { transform: translate(-50%, -100%) rotate(270deg); }
+  .clock-mark[data-index="10"] { transform: translate(-50%, -100%) rotate(300deg); }
+
+  .clock-impact {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: rgba(217, 141, 92, 0.85);
+    border: 2px solid rgba(255, 219, 178, 0.8);
+    box-shadow: 0 0 18px rgba(217, 141, 92, 0.5);
+  }
+
+  .ghost-button {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.26);
+    color: var(--sepia);
+    padding: 0.8rem 1rem;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 760px) {
+    .quiz-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .question-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .quiz-stage {
+      min-height: auto;
+    }
+  }
+</style>
+
+<script>
+  type QuestionKey = 'location' | 'shooter';
+  type QuizOption = { value: string; text: string };
+  type Question = {
+    title: string;
+    instruction: string;
+    clue: string;
+    options: QuizOption[];
+    accepted: string[];
+  };
+  type Screen = 'start' | QuestionKey | 'final';
+
+  const stage = document.querySelector<HTMLElement>('[data-quiz-stage]');
+
+  if (stage) {
+    const state: { screen: Screen; lastAnswer: QuestionKey | null } = {
+      screen: 'start',
+      lastAnswer: null,
+    };
+
+    const questions: Record<QuestionKey, Question> = {
+      location: {
+        title: 'Pregunta 1 · El centro de los hechos',
+        instruction: 'El ataque llegó desde los cuatro puntos cardinales. Lee los fragmentos y descubre dónde convergieron las tropas.',
+        clue: '“Es un lugar donde la ciudad respira, situado en la encrucijada donde el poder de la fe y el poder de la ley se miran de frente, bajo la mirada de esculturas de metal.”',
+        options: [
+          { value: 'A', text: 'Catedral Metropolitana' },
+          { value: 'B', text: 'Kiosco de la Plaza de Armas' },
+          { value: 'C', text: 'Teatro Degollado' },
+          { value: 'D', text: 'Palacio de Gobierno' },
+        ],
+        accepted: ['B', 'D'],
+      },
+      shooter: {
+        title: 'Pregunta 2 · El tirador desconocido',
+        instruction: 'Un disparo, cuatro hombres, una sola verdad. ¿Quién apretó el gatillo?',
+        clue: '“No fui quien dirigió la carga, tampoco quien defendió la plaza. Aunque no llevaba la corona del mando, estaba cerca de quien la llevaba.”',
+        options: [
+          { value: 'A', text: 'Julián Medina (Dirigió las fuerzas atacantes)' },
+          { value: 'B', text: 'Manuel M. Diéguez (Defensor de Guadalajara)' },
+          { value: 'C', text: 'Francisco Villa (Dirigente de la División del Norte)' },
+          { value: 'D', text: 'Jesús Medina (Militar bajo las órdenes de Julián)' },
+        ],
+        accepted: ['D'],
+      },
+    };
+
+    const renderQuestion = (key: QuestionKey) => {
+      const question = questions[key];
+      const answered = state.lastAnswer === key;
+
+      stage.innerHTML = `
+        <div class="screen">
+          <div class="quiz-meta">
+            <span>${question.title}</span>
+            <span>${key === 'location' ? 'Ubicación' : 'Tirador'}</span>
+          </div>
+          <h3>${question.instruction}</h3>
+          <div class="clue-box">${question.clue}</div>
+          <div class="question-grid">
+            ${question.options
+              .map(
+                (option: QuizOption) => `
+                  <button
+                    class="quiz-option"
+                    type="button"
+                    data-action="answer"
+                    data-question="${key}"
+                    data-option="${option.value}"
+                    data-label="${option.value}"
+                    ${answered ? 'disabled' : ''}
+                  >
+                    ${option.text}
+                  </button>
+                `,
+              )
+              .join('')}
+          </div>
+          <div class="feedback" data-feedback></div>
+          <button class="next-button" type="button" data-action="next" hidden>
+            ${key === 'location' ? 'Siguiente pista' : 'Revelación final'}
+          </button>
+        </div>
+      `;
+    };
+
+    const renderFinal = () => {
+      stage.innerHTML = `
+        <div class="screen">
+          <div class="revelation-card">
+            <p class="screen-kicker">EVIDENCIA FINAL</p>
+            <h3>¡Es el reloj del Palacio de Gobierno!</h3>
+            <p>
+              “No soy iglesia, pero estoy frente a una plaza. No soy una torre, pero miro desde lo alto.
+              La marca detuvo mi tiempo. Si buscas al testigo del disparo, tendrás que levantar la mirada.”
+            </p>
+            <div class="clock-illustration" aria-label="Ilustración de un reloj con un impacto en la marca del número XI">
+              <span class="clock-mark" data-index="12"></span>
+              <span class="clock-mark" data-index="1"></span>
+              <span class="clock-mark" data-index="2"></span>
+              <span class="clock-mark" data-index="3"></span>
+              <span class="clock-mark" data-index="4"></span>
+              <span class="clock-mark" data-index="5"></span>
+              <span class="clock-mark" data-index="6"></span>
+              <span class="clock-mark" data-index="7"></span>
+              <span class="clock-mark" data-index="8"></span>
+              <span class="clock-mark" data-index="9"></span>
+              <span class="clock-mark" data-index="10"></span>
+              <span class="clock-mark" data-index="11"></span>
+              <span class="clock-impact"></span>
+            </div>
+            <p>
+              La marca sobre el reloj del Palacio de Gobierno revela la verdad: la bala se clavó en el tiempo,
+              y tú has resuelto el primer misterio de Nehnemi.
+            </p>
+            <a class="cta-link" href="#newsletter">Regístrate al boletín</a>
+          </div>
+        </div>
+      `;
+    };
+
+    const renderStart = () => {
+      stage.innerHTML = `
+        <div class="screen screen--start">
+          <p class="screen-kicker">30 de enero de 1915 · Guadalajara</p>
+          <h3>Una marca, una historia por descubrir.</h3>
+          <p>
+            En plena Revolución Mexicana, un albazo sorprendió a la ciudad. Entre el ruido de los fusiles,
+            un solo disparo dejó su huella en lo alto de un edificio. Hoy, más de un siglo después, la marca
+            sigue ahí. Tu misión es reconstruir la historia.
+          </p>
+          <button class="primary-button" data-action="start">Iniciar investigación</button>
+        </div>
+      `;
+    };
+
+    const handleAnswer = (questionKey: QuestionKey, selectedValue: string) => {
+      const question = questions[questionKey];
+      const isCorrect = question.accepted.includes(selectedValue);
+      const buttons = stage.querySelectorAll<HTMLButtonElement>('[data-action="answer"]');
+
+      buttons.forEach((button: HTMLButtonElement) => {
+        const optionValue = button.getAttribute('data-option');
+        button.disabled = true;
+
+        if (question.accepted.includes(optionValue as string)) {
+          button.classList.add('is-correct');
+        }
+
+        if (optionValue === selectedValue && !isCorrect) {
+          button.classList.add('is-wrong');
+        }
+      });
+
+      const feedback = stage.querySelector<HTMLElement>('[data-feedback]');
+      if (feedback) {
+        feedback.textContent = isCorrect
+          ? 'Correcto. Esa pista encaja con la evidencia histórica.'
+          : 'Casi. La pista clave apunta a otra ruta de la historia.';
+        feedback.classList.add(isCorrect ? 'success' : 'error');
+        feedback.classList.add('is-visible');
+      }
+
+      const nextButton = stage.querySelector<HTMLButtonElement>('[data-action="next"]');
+      if (nextButton) {
+        nextButton.hidden = false;
+      }
+
+      state.lastAnswer = questionKey;
+    };
+
+    const renderScreen = () => {
+      if (state.screen === 'start') {
+        renderStart();
+        return;
+      }
+
+      if (state.screen === 'location') {
+        renderQuestion('location');
+        return;
+      }
+
+      if (state.screen === 'shooter') {
+        renderQuestion('shooter');
+        return;
+      }
+
+      renderFinal();
+    };
+
+    stage.addEventListener('click', (event: MouseEvent) => {
+      const clicked = event.target;
+      if (!(clicked instanceof Element)) return;
+      const target = clicked.closest<HTMLElement>('[data-action]');
+      if (!target) return;
+
+      const action = target.getAttribute('data-action');
+
+      if (action === 'start') {
+        state.screen = 'location';
+        renderScreen();
+        return;
+      }
+
+      if (action === 'answer') {
+        const questionKey = target.getAttribute('data-question') as QuestionKey | null;
+        const optionValue = target.getAttribute('data-option');
+
+        if (!questionKey || !optionValue) return;
+        handleAnswer(questionKey, optionValue);
+        return;
+      }
+
+      if (action === 'next') {
+        if (state.screen === 'location') {
+          state.screen = 'shooter';
+        } else {
+          state.screen = 'final';
+        }
+        renderScreen();
+      }
+    });
+
+    renderScreen();
+  }
+</script>
