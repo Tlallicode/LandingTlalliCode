@@ -1,6 +1,9 @@
+import { neon } from '@neondatabase/serverless';
+
 export const prerender = false;
 
 export async function POST({ request }: { request: Request }) {
+  const sql = neon(import.meta.env.DATABASE_URL);
   const contentType = request.headers.get('content-type') ?? '';
   let payload: Record<string, unknown> = {};
 
@@ -18,19 +21,6 @@ export async function POST({ request }: { request: Request }) {
   const email = String(payload.email ?? '').trim();
 
   if (!name || name.length < 2) {
-    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
-    if (webhookUrl) {
-      await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          content: `Nueva suscripción Nehnemi:\nNombre: ${name}\nCorreo: ${email}`,
-        }),
-      });
-    }
-
     return new Response(
       JSON.stringify({
         success: false,
@@ -55,6 +45,26 @@ export async function POST({ request }: { request: Request }) {
       }),
       {
         status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+  }
+
+  try {
+    await sql`
+      INSERT INTO interesados (nombre, correo)
+      VALUES (${name}, ${email})
+    `;
+  } catch (error) {
+    return new Response(
+      JSON.stringify({
+        success: false,
+        error: 'No se pudo guardar el registro.',
+      }),
+      {
+        status: 500,
         headers: {
           'Content-Type': 'application/json',
         },
