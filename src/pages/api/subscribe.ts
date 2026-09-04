@@ -18,6 +18,19 @@ export async function POST({ request }: { request: Request }) {
   const email = String(payload.email ?? '').trim();
 
   if (!name || name.length < 2) {
+    const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+    if (webhookUrl) {
+      await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: `Nueva suscripción Nehnemi:\nNombre: ${name}\nCorreo: ${email}`,
+        }),
+      });
+    }
+
     return new Response(
       JSON.stringify({
         success: false,

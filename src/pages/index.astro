@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Quiz from '../components/Quiz.astro';
 
 const pillars = [
   {
@@ -22,11 +21,15 @@ const roles = [
     title: 'Camino del Explorador',
     subtitle: 'Exploración activa por la ciudad',
     levels: ['Ruinas', 'Velo', 'Criptas', 'Mictlán de Sendas'],
+    image:
+      'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80',
   },
   {
     title: 'Camino del Cronista',
     subtitle: 'Investiga, escribe y guarda',
     levels: ['Vestigios', 'Umbral', 'Códice', 'Palimpsesto', 'Legendarium'],
+    image:
+      'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80',
   },
 ];
 ---
@@ -41,10 +44,10 @@ const roles = [
       <nav class="topnav" aria-label="Navegación principal">
         <a href="#pilares">Cómo funciona</a>
         <a href="#roles">Caminos</a>
-        <a href="#quiz">Quiz</a>
+        <a href="/quiz-kit">Quiz</a>
         <a href="#newsletter">Newsletter</a>
       </nav>
-      <a class="nav-cta" href="#quiz">Jugar el Demo</a>
+      <a class="nav-cta" href="/quiz-kit">Jugar el Demo</a>
     </header>
 
     <section class="hero section-shell" id="hero">
@@ -57,7 +60,7 @@ const roles = [
           sobre el mundo real.
         </p>
         <div class="hero-actions">
-          <a class="primary-button" href="#quiz">Descubre el Misterio</a>
+          <a class="primary-button" href="/quiz-kit">Descubre el Misterio</a>
           <a class="secondary-button" href="#pilares">Cómo funciona</a>
         </div>
       </div>
@@ -101,27 +104,30 @@ const roles = [
       <div class="roles-grid">
         {roles.map((role) => (
           <article class="role-card">
-            <p class="role-label">{role.subtitle}</p>
-            <h3>{role.title}</h3>
-            <ul>
-              {role.levels.map((level) => (
-                <li>{level}</li>
-              ))}
-            </ul>
+            <div class="role-content">
+              <p class="role-label">{role.subtitle}</p>
+              <h3>{role.title}</h3>
+              <ul>
+                {role.levels.map((level) => (
+                  <li>{level}</li>
+                ))}
+              </ul>
+            </div>
+            <div class="role-image-wrap" aria-hidden="true">
+              <img src={role.image} alt="" loading="lazy" />
+            </div>
           </article>
         ))}
       </div>
     </section>
 
-    <Quiz />
-
     <section class="section-shell newsletter-section" id="newsletter">
       <div class="newsletter-context">
         <span class="eyebrow">Newsletter</span>
-        <h2>¡Únete a la sociedad secreta de investigadores!</h2>
+        <h2>Conviértete en cronista fundador de Nehnemi</h2>
         <p>
-          Suscríbete a nuestra newsletter para recibir actualizaciones exclusivas sobre el desarrollo de
-          Nehnemi, historias inéditas de Guadalajara y ser el primero en probar la versión Beta.
+          Deja tu nombre y correo para recibir avances privados del desarrollo, relatos inéditos de
+          Guadalajara y acceso temprano al lanzamiento del juego.
         </p>
       </div>
 
@@ -154,17 +160,7 @@ const roles = [
         <div>
           <h3>Redes</h3>
           <ul>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">X / Twitter</a></li>
-            <li><a href="#">YouTube</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Alianzas</h3>
-          <ul>
-            <li><a href="#">Gobierno</a></li>
-            <li><a href="#">Instituciones Educativas</a></li>
-            <li><a href="#">Marcas</a></li>
+            <li><a href="https://instagram.com/tlallicode" target="_blank" rel="noreferrer noopener">@tlallicode</a></li>
           </ul>
         </div>
       </div>
@@ -191,7 +187,7 @@ const roles = [
 
       if (!payload.name || !payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
         if (message) {
-          message.textContent = 'Por favor, completa tu nombre y un correo electrónico válido.';
+          message.textContent = 'Completa tu nombre y un correo válido para registrar tu acceso.';
           message.className = 'form-status error';
         }
         return;
@@ -209,17 +205,17 @@ const roles = [
         const result = await response.json().catch(() => ({}));
 
         if (!response.ok) {
-          throw new Error(result.error || 'No pudimos procesar tu suscripción.');
+          throw new Error(result.error || 'No pudimos registrar tus datos en este momento.');
         }
 
         if (message) {
-          message.textContent = result.message || '¡Gracias por unirte!';
+          message.textContent = result.message || 'Registro completado. Te contactaremos pronto.';
           message.className = 'form-status success';
         }
         form.reset();
       } catch (error) {
         if (message) {
-          message.textContent = error instanceof Error ? error.message : 'Hubo un problema inesperado.';
+          message.textContent = error instanceof Error ? error.message : 'Ocurrió un problema inesperado.';
           message.className = 'form-status error';
         }
       }
@@ -352,7 +348,7 @@ const roles = [
   }
 
   .hero h1 {
-    font-size: clamp(2.8rem, 6vw, 5.2rem);
+    font-size: clamp(2.15rem, 5vw, 4.4rem);
     line-height: 0.95;
     max-width: 620px;
   }
@@ -440,7 +436,7 @@ const roles = [
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
-    margin-left: auto;
+    margin-left: 0;
   }
 
   .section-heading {
@@ -496,7 +492,48 @@ const roles = [
 
   .role-card {
     display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .role-content {
+    display: grid;
     gap: 0.9rem;
+    padding-right: 0.8rem;
+    z-index: 1;
+  }
+
+  .role-image-wrap {
+    position: relative;
+    min-height: 220px;
+    border-left: 1px solid rgba(212, 175, 55, 0.16);
+    overflow: hidden;
+  }
+
+  .role-image-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(33, 27, 22, 0.98) 0%,
+      rgba(33, 27, 22, 0.78) 18%,
+      rgba(33, 27, 22, 0.32) 48%,
+      rgba(33, 27, 22, 0) 100%
+    );
+    z-index: 1;
+  }
+
+  .role-image-wrap img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.7) sepia(0.4) brightness(0.7);
+    transform: scale(1.03);
   }
 
   .role-label {
@@ -653,6 +690,31 @@ const roles = [
 
     .topbar {
       justify-content: space-between;
+    }
+
+    .role-card {
+      grid-template-columns: 1fr;
+    }
+
+    .role-content {
+      padding-right: 0;
+      margin-bottom: 1rem;
+    }
+
+    .role-image-wrap {
+      min-height: 180px;
+      border-left: none;
+      border-top: 1px solid rgba(212, 175, 55, 0.16);
+    }
+
+    .role-image-wrap::before {
+      background: linear-gradient(
+        180deg,
+        rgba(33, 27, 22, 0.98) 0%,
+        rgba(33, 27, 22, 0.78) 20%,
+        rgba(33, 27, 22, 0.35) 50%,
+        rgba(33, 27, 22, 0) 100%
+      );
     }
   }
 

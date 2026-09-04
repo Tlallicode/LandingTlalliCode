@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Quiz from '../components/Quiz.astro';
+---
+
+<Layout
+  title="Quiz Kit | El Misterio del Reloj"
+  description="Resuelve el primer caso histórico de Nehnemi: El Misterio del Reloj."
+>
+  <main class="quiz-page">
+    <header class="quiz-top">
+      <a class="back-link" href="/">← Volver al inicio</a>
+      <h1>Quiz Kit · El Misterio del Reloj</h1>
+      <p>
+        Sigue las pistas, reconstruye los hechos y descubre la marca que quedó detenida en el tiempo.
+      </p>
+    </header>
+    <Quiz />
+  </main>
+</Layout>
+
+<style>
+  .quiz-page {
+    width: min(1100px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 2rem 0 3rem;
+  }
+
+  .quiz-top {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .back-link {
+    color: var(--sepia-strong);
+    font-weight: 700;
+    width: fit-content;
+  }
+
+  .quiz-top h1 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+  }
+</style>
