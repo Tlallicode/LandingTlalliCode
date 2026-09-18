@@ -1,148 +1,290 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const pillars = [
+const kits = [
   {
-    title: 'Explora',
-    description: 'Descubre lugares y espacios históricos a través de rutas activas y fragmentos de memoria que emergen en el paisaje urbano.',
+    name: 'Kit: El Secreto del Hospicio',
+    label: 'Edición limitada',
+    description: 'Cinco cartas de personajes, un mapa de ruinas y un token de historia con pistas ocultas.',
+    price: '$170 MXN',
+    accent: 'copper',
+    icon: 'N',
   },
   {
-    title: 'Resuelve',
-    description: 'Conoce la historia mediante retos, enigmas y misterios que transforman cada esquina en una pieza del relato colectivo.',
-  },
-  {
-    title: 'Descubre',
-    description: 'Convierte cada visita en una experiencia viva: guarda recuerdos, comparte hallazgos y vive la ciudad como un archivo abierto.',
-  },
+    name: 'Más Kits en camino',
+    label: 'Pronto',
+    description: 'Sigue atento a nuestras redes sociales para descubrir los próximos kits de exploración y cartas coleccionables.',
+    price: '',
+    accent: 'gold',
+    icon: 'P',
+  }
 ];
 
-const roles = [
+const galleryCards = [
   {
-    title: 'Camino del Explorador',
-    subtitle: 'Exploración activa por la ciudad',
-    levels: ['Ruinas', 'Velo', 'Criptas', 'Mictlán de Sendas'],
+    title: 'Pancho Villa',
+    role: 'Comandante de la ciudad',
+    rarity: 'Legendaria',
+    lore: 'El Centauro del norte que no pidió permiso a la historia, sino que la tomó por asalto a lomo de caballo. Sus hazañas llevaron un ejercito extranjero al desierto sin jamás encontrarlo.',
+    stats: ['Fuerza 9', 'Lealtad 8', 'Historia 10'],
     image:
-      'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80',
+      '/pancho_villa.png',
   },
   {
-    title: 'Camino del Cronista',
-    subtitle: 'Investiga, escribe y guarda',
-    levels: ['Vestigios', 'Umbral', 'Códice', 'Palimpsesto', 'Legendarium'],
+    title: 'Julian Medina',
+    role: 'General de armada',
+    rarity: 'Ultra rara',
+    lore: 'Una sombra a galope que vistió a occidente con la tormenta del norte. El gobernador que no dictó su voluntad con tinta ni tronos, sino con el polvo y el acero de sus batallas.',
+    stats: ['Sabiduría 10', 'Perspicacia 9', 'Voz 8'],
     image:
-      'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=80',
+      '/julian_medina.png',
   },
+  {
+    title: 'Jesús Medina',
+    role: 'Soldado Mexicano',
+    rarity: 'Épica',
+    lore: 'Un destello de plomo rebelde silenció al palacio. El que no disparó contra el metal, sino al tiempo mismo. Allá arriba aún se asoma la cicatriz de su impaciencia.',
+    stats: ['Rebeldía 9', 'Estética 10', 'Resistencia 7'],
+    image:
+      '/jesus_medina.png',
+  }
 ];
 ---
 
-<Layout title="Nehnemi | Convirtiendo datos históricos en experiencias" description="Landing page y quiz de Nehnemi by Tlallicode. Explora la historia de Guadalajara con una experiencia de realidad mixta y misterios históricos.">
+<Layout title="Nehnemi | Colecciona la historia de Guadalajara" description="Landing page de Nehnemi con kits de exploración, cartas coleccionables, personajes históricos y newsletter para captar leads.">
   <main class="page-shell">
     <header class="topbar">
-      <div class="brand-block">
+      <div class="brand-block" aria-label="Nehnemi logo">
         <span class="brand-mark">N</span>
         <span>Nehnemi</span>
       </div>
+
       <nav class="topnav" aria-label="Navegación principal">
-        <a href="#pilares">Cómo funciona</a>
-        <a href="#roles">Caminos</a>
-        <a href="/quiz-kit">Quiz</a>
-        <a href="#newsletter">Newsletter</a>
+        <a href="#kits">Kits</a>
+        <a href="#personajes">Personajes</a>
+        <a href="#newsletter">Sociedad</a>
       </nav>
-      <a class="nav-cta" href="/quiz-kit">Jugar el Demo</a>
+
+      <a class="nav-cta" href="#kits">Ver tienda/Kits</a>
     </header>
 
     <section class="hero section-shell" id="hero">
       <div class="hero-copy">
-        <span class="hero-tag">by Tlallicode</span>
-        <h1>Convirtiendo datos históricos en experiencias.</h1>
+        <span class="hero-tag">Coleccionables históricos · Guadalajara</span>
+        <h1>La historia de la ciudad está en tus manos.</h1>
         <p>
-          Una experiencia de exploración urbana que utiliza juegos, historias y tecnología para
-          descubrir la cultura y el patrimonio de nuestros espacios cotidianos. Una capa de magia
-          sobre el mundo real.
+          Descubre kits de exploración, cartas de personajes ilustres y misterios del pasado de
+          Guadalajara listos para coleccionar, jugar y compartir.
         </p>
+
         <div class="hero-actions">
-          <a class="primary-button" href="/quiz-kit">Descubre el Misterio</a>
-          <a class="secondary-button" href="#pilares">Cómo funciona</a>
+          <a class="primary-button" href="#kits">Explorar los Kits</a>
+          <a class="secondary-button" href="#personajes">Conoce a los Personajes</a>
         </div>
+
+        <ul class="hero-stats" aria-label="Estadísticas de la colección">
+          <li>
+            <strong>3+</strong>
+            <span>cartas únicas</span>
+          </li>
+          <li>
+            <strong>1</strong>
+            <span>kit básico y más pronto</span>
+          </li>
+          <li>
+            <strong>Únete</strong>
+            <span>a nuestra newsletter</span>
+          </li>
+        </ul>
       </div>
 
-      <div class="hero-visual" aria-label="Visualización narrativa de la comunidad de cronistas">
-        <div class="visual-card visual-card--main">
-          <span class="badge">Guadalajara</span>
-          <h2>Sociedad Secreta de Cronistas</h2>
-          <p>Fragmentos, ecos y rutas ocultas en la ciudad.</p>
-        </div>
-        <div class="visual-card visual-card--meta">
-          <span>Mapa vivo</span>
-          <strong>24 rutas activas</strong>
+      <div class="hero-visual" aria-label="Composición de cartas de colección Nehnemi">
+        <article class="trading-card trading-card--main">
+          <div class="card-frame">
+            <div class="card-header">
+              <span class="mini-tag">Legendaria</span>
+              <span class="card-code">NEH-07</span>
+            </div>
+            <div class="card-art card-art--main">
+              <div class="art-sheen"></div>
+            </div>
+            <div class="card-body">
+              <p>Personaje</p>
+              <h2>Pancho Villa</h2>
+            </div>
+          </div>
+        </article>
+
+        <article class="trading-card trading-card--left">
+          <div class="card-frame">
+            <div class="card-header">
+              <span class="mini-tag">Épica</span>
+              <span class="card-code">NEH-11</span>
+            </div>
+            <div class="card-art card-art--left">
+              <div class="art-sheen"></div>
+            </div>
+            <div class="card-body">
+              <p>Personaje</p>
+              <h2>Jesús Medina</h2>
+            </div>
+          </div>
+        </article>
+
+        <article class="trading-card trading-card--right">
+          <div class="card-frame">
+            <div class="card-header">
+              <span class="mini-tag">Ultra rara</span>
+              <span class="card-code">NEH-19</span>
+            </div>
+            <div class="card-art card-art--right">
+              <div class="art-sheen"></div>
+            </div>
+            <div class="card-body">
+              <p>Personaje</p>
+              <h2>Julian Medina</h2>
+            </div>
+          </div>
+        </article>
+
+        <div class="floating-badge">
+          <span>EDICIÓN LIMITADA</span>
+          <strong>2026</strong>
         </div>
       </div>
     </section>
 
-    <section class="section-shell" id="pilares">
+    <section class="section-shell" id="kits">
       <div class="section-heading">
-        <span class="eyebrow">¿Cómo funciona?</span>
-        <h2>Los 3 pilares de la experiencia</h2>
+        <span class="eyebrow">Nuestros Kits</span>
+        <h2>Artefactos para explorar la ciudad</h2>
       </div>
 
-      <div class="pillars-grid">
-        {pillars.map((pillar) => (
-          <article class="pillar-card">
-            <div class="pillar-icon">{pillar.title.slice(0, 1)}</div>
-            <h3>{pillar.title}</h3>
-            <p>{pillar.description}</p>
+      <div class="kits-grid">
+        {kits.map((kit) => (
+          <article class="kit-card">
+            <div class={`kit-art kit-art--${kit.accent}`}>
+              <div class="kit-icon">{kit.icon}</div>
+              <span class="kit-badge">{kit.label}</span>
+            </div>
+            <div class="kit-content">
+              <h3>{kit.name}</h3>
+              <p>{kit.description}</p>
+              <div class="kit-footer">
+                <strong>{kit.price}</strong>
+                <button class="kit-trigger" type="button" data-kit-name={kit.name} data-kit-price={kit.price} data-kit-label={kit.label} data-kit-description={kit.description} aria-label={`Ver más información de ${kit.name}`}>
+                  Ver kit
+                </button>
+              </div>
+            </div>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="section-shell" id="roles">
+    <section class="story-band" aria-label="Narrativa de Nehnemi">
+      <div class="story-copy">
+        <span class="eyebrow">El universo Nehnemi</span>
+        <h2>No solo juegas; descubres la memoria de la ciudad.</h2>
+      </div>
+      <div class="story-points">
+        <div>
+          <strong>06</strong>
+          <span>historias ocultas</span>
+        </div>
+        <div>
+          <strong>14</strong>
+          <span>lugares reales</span>
+        </div>
+        <div>
+          <strong>∞</strong>
+          <span>misterios por revelar</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell" id="personajes">
       <div class="section-heading">
-        <span class="eyebrow">Elige tu camino</span>
-        <h2>Ascenso de rango y mecánicas de juego</h2>
+        <span class="eyebrow">Galería de Cartas</span>
+        <h2>Personajes que dejaron huella en la ciudad</h2>
       </div>
 
-      <div class="roles-grid">
-        {roles.map((role) => (
-          <article class="role-card">
-            <div class="role-content">
-              <p class="role-label">{role.subtitle}</p>
-              <h3>{role.title}</h3>
-              <ul>
-                {role.levels.map((level) => (
-                  <li>{level}</li>
-                ))}
-              </ul>
-            </div>
-            <div class="role-image-wrap" aria-hidden="true">
-              <img src={role.image} alt="" loading="lazy" />
-            </div>
-          </article>
+      <div class="carousel" aria-label="Carrusel de personajes">
+        <button class="carousel-control" type="button" data-dir="prev" aria-label="Carta anterior">←</button>
+
+        <div class="carousel-window">
+          {galleryCards.map((card, index) => (
+            <article
+              class={`character-card ${index === 0 ? 'is-active' : ''}`}
+              data-index={index}
+              aria-label={`Carta de ${card.title}`}
+            >
+              <div class="character-card-inner">
+                <div class="character-card-face character-card-front">
+                  <div class="card-topline">
+                    <span class="rarity">{card.rarity}</span>
+                    <span class="card-number">0{index + 1}</span>
+                  </div>
+                  <div class="portrait" style={`background-image: url('${card.image}')`}></div>
+                  <div class="front-copy">
+                    <p>{card.role}</p>
+                    <h3>{card.title}</h3>
+                  </div>
+                  <ul class="stat-row">
+                    {card.stats.map((stat) => <li>{stat}</li>)}
+                  </ul>
+                </div>
+
+                <div class="character-card-face character-card-back">
+                  <span class="back-label">Historia</span>
+                  <h3>{card.title}</h3>
+                  <p>{card.lore}</p>
+                  <div class="back-meta">
+                    <span>{card.role}</span>
+                    <span>{card.rarity}</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <button class="carousel-control" type="button" data-dir="next" aria-label="Siguiente carta">→</button>
+      </div>
+
+      <div class="carousel-indicators" aria-label="Indicadores del carrusel">
+        {galleryCards.map((card, index) => (
+          <button class={`indicator ${index === 0 ? 'is-active' : ''}`} type="button" data-index={index} aria-label={`Ir a ${card.title}`}>
+            <span>{index + 1}</span>
+          </button>
         ))}
       </div>
     </section>
 
-    <section class="section-shell newsletter-section" id="newsletter">
-      <div class="newsletter-context">
-        <span class="eyebrow">Newsletter</span>
-        <h2>Conviértete en cronista fundador de Nehnemi</h2>
-        <p>
-          Deja tu nombre y correo para recibir avances privados del desarrollo, relatos inéditos de
-          Guadalajara y acceso temprano al lanzamiento del juego.
-        </p>
-      </div>
+    <section class="section-shell newsletter-shell" id="newsletter">
+      <div class="newsletter-panel">
+        <div class="newsletter-copy">
+          <span class="eyebrow">Únete a la Sociedad de Cronistas</span>
+          <h2>Descubre los secretos detrás del desarrollo de Nehnemi.</h2>
+          <p>
+            Recibe adelantos exclusivos de futuras cartas, historias ocultas de la ciudad y acceso
+            anticipado a los próximos lanzamientos antes que nadie.
+          </p>
+        </div>
 
-      <form class="newsletter-form" id="newsletter-form" novalidate>
-        <label>
-          <span>Tu nombre</span>
-          <input type="text" name="name" placeholder="Escribe tu nombre" required />
-        </label>
-        <label>
-          <span>Tu correo electrónico</span>
-          <input type="email" name="email" placeholder="correo@ejemplo.com" required />
-        </label>
-        <button type="submit" class="primary-button">Suscribirme al Desarrollo</button>
-        <p class="form-status" id="newsletter-message" aria-live="polite"></p>
-      </form>
+        <form class="newsletter-form" id="newsletter-form" novalidate>
+          <label>
+            <span>Tu nombre</span>
+            <input type="text" name="name" placeholder="Escribe tu nombre" required />
+          </label>
+          <label>
+            <span>Tu correo electrónico</span>
+            <input type="email" name="email" placeholder="correo@ejemplo.com" required />
+          </label>
+          <button type="submit" class="primary-button">Revelar el pasado</button>
+          <p class="form-status" id="newsletter-message" aria-live="polite"></p>
+        </form>
+      </div>
     </section>
   </main>
 
@@ -153,14 +295,15 @@ const roles = [
           <span class="brand-mark">N</span>
           <span>Nehnemi</span>
         </div>
-        <p>Fomentando iniciativas con impacto social, cultural y tecnológico.</p>
+        <p>Fomentando historias, coleccionables y exploración cultural en la ciudad.</p>
       </div>
 
       <div class="footer-links">
         <div>
           <h3>Redes</h3>
           <ul>
-            <li><a href="https://instagram.com/tlallicode" target="_blank" rel="noreferrer noopener">@tlallicode</a></li>
+            <li><a href="https://instagram.com/tlallicode" target="_blank" rel="noreferrer noopener">Instagram</a></li>
+            <li><a href="mailto:a23310134@ceti.mx">Contacto</a></li>
           </ul>
         </div>
       </div>
@@ -172,9 +315,80 @@ const roles = [
     </div>
   </footer>
 
+  <div class="kit-modal" id="kit-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="kit-modal-title">
+    <div class="kit-modal-backdrop" data-close-modal="true"></div>
+    <div class="kit-modal-panel">
+      <button class="kit-modal-close" type="button" aria-label="Cerrar detalle del kit">×</button>
+      <div class="kit-modal-badge" id="kit-modal-label">Edición</div>
+      <h3 id="kit-modal-title">Nombre del kit</h3>
+      <p id="kit-modal-description">Descripción del kit.</p>
+      <div class="kit-modal-meta">
+        <span id="kit-modal-price">Próximamente</span>
+        <span id="kit-modal-includes">Incluye cartas y misión</span>
+      </div>
+      <div class="kit-modal-actions">
+        <button type="button" class="primary-button">Próximamente</button>
+        <button type="button" class="secondary-button is-light" data-close-modal="true">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const form = document.querySelector<HTMLFormElement>('#newsletter-form');
     const message = document.querySelector('#newsletter-message');
+    const kitModal = document.querySelector<HTMLDivElement>('#kit-modal');
+    const modalTitle = document.querySelector<HTMLElement>('#kit-modal-title');
+    const modalDescription = document.querySelector<HTMLElement>('#kit-modal-description');
+    const modalPrice = document.querySelector<HTMLElement>('#kit-modal-price');
+    const modalLabel = document.querySelector<HTMLElement>('#kit-modal-label');
+    const modalIncludes = document.querySelector<HTMLElement>('#kit-modal-includes');
+
+    const openKitModal = (name: string, label: string, description: string, price: string) => {
+      if (!kitModal || !modalTitle || !modalDescription || !modalPrice || !modalLabel || !modalIncludes) return;
+
+      modalTitle.textContent = name;
+      modalLabel.textContent = label;
+      modalDescription.textContent = description;
+      modalPrice.textContent = price || 'Próximamente';
+      modalIncludes.textContent = name.includes('Secreto')
+        ? 'Incluye 3 cartas, un mapa y 1 token de historia'
+        : label.includes('Pronto')
+          ? 'Disponible próximamente'
+          : 'Incluye 3 cartas raras, caja de colección y accesorios premium';
+
+      kitModal.classList.add('is-open');
+      kitModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeKitModal = () => {
+      if (!kitModal) return;
+      kitModal.classList.remove('is-open');
+      kitModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll<HTMLButtonElement>('.kit-trigger').forEach((button) => {
+      button.addEventListener('click', () => {
+        openKitModal(
+          button.dataset.kitName || 'Kit Nehnemi',
+          button.dataset.kitLabel || 'Edición',
+          button.dataset.kitDescription || 'Más información del kit.',
+          button.dataset.kitPrice || 'Próximamente',
+        );
+      });
+    });
+
+    document.querySelectorAll<HTMLElement>('[data-close-modal="true"]').forEach((element) => {
+      element.addEventListener('click', closeKitModal);
+    });
+
+    document.querySelector<HTMLButtonElement>('.kit-modal-close')?.addEventListener('click', closeKitModal);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && kitModal?.classList.contains('is-open')) {
+        closeKitModal();
+      }
+    });
 
     form?.addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -187,7 +401,7 @@ const roles = [
 
       if (!payload.name || !payload.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
         if (message) {
-          message.textContent = 'Completa tu nombre y un correo válido para registrar tu acceso.';
+          message.textContent = 'Completa tu nombre y un correo válido para unirte a la Sociedad.';
           message.className = 'form-status error';
         }
         return;
@@ -196,9 +410,7 @@ const roles = [
       try {
         const response = await fetch('/api/subscribe', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
 
@@ -209,9 +421,10 @@ const roles = [
         }
 
         if (message) {
-          message.textContent = result.message || 'Registro completado. Te contactaremos pronto.';
+          message.textContent = result.message || '¡Bienvenido Cronista! El primer secreto va en camino.';
           message.className = 'form-status success';
         }
+
         form.reset();
       } catch (error) {
         if (message) {
@@ -220,6 +433,47 @@ const roles = [
         }
       }
     });
+
+    const cards = Array.from(document.querySelectorAll('.character-card'));
+    const indicators = Array.from(document.querySelectorAll<HTMLElement>('.indicator'));
+    const controls = Array.from(document.querySelectorAll<HTMLButtonElement>('.carousel-control'));
+    let activeIndex = 0;
+
+    function renderCarousel(nextIndex: number) {
+      activeIndex = (nextIndex + cards.length) % cards.length;
+
+      cards.forEach((card, index) => {
+        card.classList.remove('is-active', 'is-prev', 'is-next');
+        if (index === activeIndex) card.classList.add('is-active');
+        if (index === (activeIndex - 1 + cards.length) % cards.length) card.classList.add('is-prev');
+        if (index === (activeIndex + 1) % cards.length) card.classList.add('is-next');
+      });
+
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('is-active', index === activeIndex);
+      });
+    }
+
+    controls.forEach((button) => {
+      button.addEventListener('click', () => {
+        const dir = button.dataset.dir === 'next' ? 1 : -1;
+        renderCarousel(activeIndex + dir);
+      });
+    });
+
+    indicators.forEach((indicator) => {
+      indicator.addEventListener('click', () => {
+        renderCarousel(Number(indicator.dataset.index));
+      });
+    });
+
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('is-flipped');
+      });
+    });
+
+    renderCarousel(0);
   </script>
 </Layout>
 
@@ -237,7 +491,7 @@ const roles = [
   .topbar {
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 50;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -245,42 +499,45 @@ const roles = [
     width: min(1200px, calc(100% - 2rem));
     margin: 1rem auto 0;
     padding: 1rem 1.25rem;
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    border: 1px solid rgba(212, 175, 55, 0.18);
     border-radius: 18px;
+    background: rgba(26, 22, 18, 0.82);
     backdrop-filter: blur(18px);
-    background: rgba(26, 22, 18, 0.78);
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
   }
 
   .brand-block {
     display: flex;
     align-items: center;
     gap: 0.7rem;
+    color: var(--ink);
     font-family: 'Cinzel', serif;
-    font-size: 1.25rem;
+    font-size: 1.28rem;
     font-weight: 700;
-    color: var(--sepia);
   }
 
   .brand-mark {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 0.5rem;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.08));
-    border: 1px solid rgba(212, 175, 55, 0.35);
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 0.7rem;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(212, 175, 55, 0.08));
+    border: 1px solid rgba(212, 175, 55, 0.3);
     color: var(--sepia-strong);
-    font-size: 1.05rem;
   }
 
   .topnav {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 1.4rem;
     color: var(--ink-muted);
     font-size: 0.95rem;
+  }
+
+  .topnav a {
+    transition: color 0.2s ease;
   }
 
   .topnav a:hover {
@@ -289,71 +546,86 @@ const roles = [
 
   .nav-cta,
   .primary-button,
-  .secondary-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    padding: 0.8rem 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 800;
-    transition: transform 0.2s ease;
+  .secondary-button,
+  .kit-footer button,
+  .carousel-control,
+  .indicator {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
 
   .nav-cta,
   .primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
     background: linear-gradient(135deg, var(--sepia-strong), #b18a1a);
-    color: #201a16;
-    box-shadow: 0 10px 24px rgba(212, 175, 55, 0.18);
+    color: #1f1914;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 12px 28px rgba(212, 175, 55, 0.18);
   }
 
   .secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    border: 1px solid rgba(212, 175, 55, 0.28);
     background: transparent;
-    color: var(--sepia);
-    border: 1px solid rgba(212, 175, 55, 0.25);
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: 0.04em;
   }
 
   .nav-cta:hover,
   .primary-button:hover,
-  .secondary-button:hover {
+  .secondary-button:hover,
+  .kit-footer button:hover,
+  .carousel-control:hover,
+  .indicator:hover {
     transform: translateY(-1px);
   }
 
   .hero {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 2rem;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.5rem;
     align-items: center;
-    padding-top: 3rem;
+    padding-top: 3.5rem;
   }
 
   .hero-copy {
     display: grid;
-    gap: 1rem;
+    gap: 1.2rem;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-tag,
   .eyebrow {
     display: inline-flex;
     width: fit-content;
-    padding: 0.38rem 0.8rem;
+    padding: 0.42rem 0.8rem;
     border-radius: 999px;
     background: rgba(212, 175, 55, 0.08);
-    border: 1px solid rgba(212, 175, 55, 0.28);
+    border: 1px solid rgba(212, 175, 55, 0.24);
     color: var(--sepia-strong);
     font-size: 0.72rem;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
   }
 
   .hero h1 {
-    font-size: clamp(2.15rem, 5vw, 4.4rem);
-    line-height: 0.95;
-    max-width: 620px;
+    max-width: 640px;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.92;
   }
 
-  .hero p {
+  .hero-copy p {
     max-width: 620px;
     font-size: 1.08rem;
     color: var(--ink-muted);
@@ -363,362 +635,856 @@ const roles = [
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .hero-stats {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0;
+    margin: 0.3rem 0 0;
+  }
+
+  .hero-stats li {
+    min-width: 122px;
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.8rem 1rem;
+    border-radius: 18px;
+    border: 1px solid rgba(212, 175, 55, 0.16);
+    background: rgba(34, 28, 22, 0.8);
+  }
+
+  .hero-stats strong {
+    color: var(--sepia);
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  .hero-stats span {
+    color: var(--ink-muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .hero-visual {
-    display: grid;
-    gap: 1rem;
-    min-height: 440px;
-    background:
-      linear-gradient(180deg, rgba(212, 175, 55, 0.08), rgba(26, 22, 18, 0.08)),
-      radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 30%),
-      rgba(17, 13, 11, 0.72);
-    border: 1px solid rgba(212, 175, 55, 0.18);
-    border-radius: 32px;
-    padding: 1.5rem;
     position: relative;
+    min-height: 520px;
+    border-radius: 32px;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    background:
+      radial-gradient(circle at top, rgba(212, 175, 55, 0.15), transparent 34%),
+      linear-gradient(180deg, rgba(34, 28, 22, 0.82), rgba(18, 15, 13, 0.85));
     overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 30px 55px rgba(0,0,0,0.25);
   }
 
   .hero-visual::before {
-    content: "";
+    content: '';
     position: absolute;
-    inset: 12% 8% 20% 8%;
+    inset: 12% 18% 12% 18%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.15), transparent 62%);
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.12), transparent 62%);
+    filter: blur(12px);
   }
 
-  .visual-card {
+  .trading-card {
+    position: absolute;
+    width: min(270px, 55vw);
+    aspect-ratio: 0.7;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    animation: floatCard 6s ease-in-out infinite;
+    z-index: 2;
+    perspective: 1200px;
+  }
+
+  .trading-card--main {
+    right: 20%;
+    bottom: 32px;
+    transform: rotate(-9deg) translateY(12px);
+    z-index: 3;
+    animation-delay: 0s;
+  }
+
+  .trading-card--left {
+    left: 18%;
+    bottom: 36px;
+    transform: rotate(-18deg) scale(0.9);
+    z-index: 1;
+    animation-delay: 1.6s;
+  }
+
+  .trading-card--right {
+    right: 10%;
+    top: 52px;
+    transform: rotate(14deg) scale(0.92);
+    z-index: 2;
+    animation-delay: 0.9s;
+  }
+
+  .card-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0.9rem;
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(25, 20, 17, 0.96), rgba(52, 42, 31, 0.94));
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+    transform: rotateY(0deg) rotateX(0deg);
+    transition: transform 0.4s ease;
+  }
+
+  .card-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 25%, rgba(255,255,255,0.18) 45%, transparent 60%);
+    transform: translateX(-120%);
+    transition: transform 0.7s ease;
+  }
+
+  .trading-card:hover .card-frame::before {
+    transform: translateX(120%);
+  }
+
+  .trading-card:hover .card-frame {
+    transform: rotateY(8deg) rotateX(8deg) translateY(-6px);
+  }
+
+  .card-header,
+  .card-topline,
+  .back-meta,
+  .kit-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .card-header,
+  .card-topline {
     position: relative;
     z-index: 1;
-    border-radius: 24px;
-    padding: 1.2rem;
-    border: 1px solid rgba(212, 175, 55, 0.2);
-    background: rgba(31, 25, 20, 0.7);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
   }
 
-  .visual-card--main {
-    margin-top: auto;
-    min-height: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  .badge {
+  .mini-tag,
+  .rarity,
+  .back-label,
+  .kit-badge {
     display: inline-flex;
-    width: fit-content;
-    padding: 0.45rem 0.7rem;
+    align-items: center;
+    justify-content: center;
+    padding: 0.32rem 0.55rem;
     border-radius: 999px;
-    background: rgba(212, 175, 55, 0.08);
+    background: rgba(212, 175, 55, 0.12);
     border: 1px solid rgba(212, 175, 55, 0.2);
     color: var(--sepia-strong);
-    font-size: 0.75rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
   }
 
-  .visual-card h2 {
-    margin-top: 1rem;
-    font-size: clamp(1.8rem, 2vw, 2.5rem);
+  .card-code,
+  .card-number {
+    color: var(--ink-muted);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
   }
 
-  .visual-card p,
-  .visual-card span,
-  .visual-card strong {
+  .card-art {
+    position: relative;
+    height: 62%;
+    margin-top: 0.9rem;
+    border-radius: 14px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(212, 175, 55, 0.16);
+  }
+
+  .card-art--main {
+    background-image: linear-gradient(180deg, rgba(20,15,12,0.15), rgba(20,15,12,0.45)), url('/pancho_villa.png');
+  }
+
+  .card-art--left {
+    background-image: linear-gradient(180deg, rgba(20,15,12,0.15), rgba(20,15,12,0.45)), url('/julian_medina.png');
+  }
+
+  .card-art--right {
+    background-image: linear-gradient(180deg, rgba(20,15,12,0.15), rgba(20,15,12,0.45)), url('/jesus_medina.png');
+  }
+
+  .art-sheen {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent 42%, rgba(212,175,55,0.2));
+  }
+
+  .card-body {
+    position: relative;
+    z-index: 1;
+    margin-top: 0.9rem;
+    display: grid;
+    gap: 0.15rem;
+  }
+
+  .card-body p,
+  .front-copy p,
+  .character-card-back p,
+  .kit-content p,
+  .newsletter-copy p,
+  .story-copy p,
+  .site-footer p {
     color: var(--ink-muted);
   }
 
-  .visual-card--meta {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    margin-left: 0;
+  .card-body h2,
+  .front-copy h3,
+  .character-card-back h3,
+  .kit-content h3,
+  .story-copy h2,
+  .newsletter-copy h2,
+  .section-heading h2 {
+    color: var(--ink);
+  }
+
+  .card-body h2 {
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+  }
+
+  .floating-badge {
+    position: absolute;
+    right: 24px;
+    top: 22px;
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.7rem 0.85rem;
+    border-radius: 14px;
+    border: 1px solid rgba(212,175,55,0.2);
+    background: rgba(18,15,13,0.54);
+    backdrop-filter: blur(8px);
+    z-index: 4;
+  }
+
+  .floating-badge span {
+    color: var(--sepia-strong);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .floating-badge strong {
+    font-size: 1.2rem;
+    color: var(--ink);
   }
 
   .section-heading {
     display: grid;
-    gap: 0.6rem;
+    gap: 0.8rem;
     margin-bottom: 1.8rem;
   }
 
   .section-heading h2 {
-    font-size: clamp(2rem, 3vw, 2.9rem);
-  }
-
-  .pillars-grid,
-  .roles-grid {
-    display: grid;
-    gap: 1.2rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .pillar-card,
-  .role-card,
-  .newsletter-form {
-    background: rgba(33, 27, 22, 0.88);
-    border: 1px solid rgba(212, 175, 55, 0.16);
-    border-radius: 22px;
-    padding: 1.4rem;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
-  }
-
-  .pillar-card {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .pillar-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 0.8rem;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(212, 175, 55, 0.05));
-    color: var(--sepia-strong);
-    font-family: 'Cinzel', serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-  }
-
-  .pillar-card h3,
-  .role-card h3 {
-    font-size: 1.7rem;
-  }
-
-  .role-card {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 0;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .role-content {
-    display: grid;
-    gap: 0.9rem;
-    padding-right: 0.8rem;
-    z-index: 1;
-  }
-
-  .role-image-wrap {
-    position: relative;
-    min-height: 220px;
-    border-left: 1px solid rgba(212, 175, 55, 0.16);
-    overflow: hidden;
-  }
-
-  .role-image-wrap::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      90deg,
-      rgba(33, 27, 22, 0.98) 0%,
-      rgba(33, 27, 22, 0.78) 18%,
-      rgba(33, 27, 22, 0.32) 48%,
-      rgba(33, 27, 22, 0) 100%
-    );
-    z-index: 1;
-  }
-
-  .role-image-wrap img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: saturate(0.7) sepia(0.4) brightness(0.7);
-    transform: scale(1.03);
-  }
-
-  .role-label {
-    color: var(--sepia-strong);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-  }
-
-  .role-card ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .role-card li {
-    padding: 0.45rem 0.75rem;
-    border-radius: 999px;
-    border: 1px solid rgba(212, 175, 55, 0.15);
-    background: rgba(212, 175, 55, 0.04);
-    color: var(--ink-muted);
-    font-size: 0.9rem;
-  }
-
-  .newsletter-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    align-items: center;
-    margin-top: 1rem;
-  }
-
-  .newsletter-context {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .newsletter-context h2 {
     font-size: clamp(2rem, 3vw, 3rem);
   }
 
+  .kits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .kit-card {
+    display: grid;
+    gap: 0;
+    overflow: hidden;
+    border-radius: 24px;
+    background: rgba(35, 29, 23, 0.86);
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+  }
+
+  .kit-art {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    min-height: 200px;
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .kit-art::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(255,255,255,0.12), transparent 32%);
+  }
+
+  .kit-art--copper {
+    background: linear-gradient(145deg, rgba(111,85,42,0.9), rgba(36,29,22,0.9));
+  }
+
+  .kit-art--gold {
+    background: linear-gradient(145deg, rgba(156,118,35,0.9), rgba(30,24,20,0.9));
+  }
+
+  .kit-art--onyx {
+    background: linear-gradient(145deg, rgba(77,67,51,0.9), rgba(18,15,13,0.9));
+  }
+
+  .kit-icon {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 1rem;
+    background: rgba(18,15,13,0.38);
+    border: 1px solid rgba(212,175,55,0.22);
+    color: var(--sepia);
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+  }
+
+  .kit-badge {
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+  }
+
+  .kit-content {
+    display: grid;
+    gap: 1rem;
+    padding: 1.2rem 1.15rem 1.35rem;
+  }
+
+  .kit-content h3 {
+    font-size: 1.55rem;
+  }
+
+  .kit-footer {
+    margin-top: 0.35rem;
+  }
+
+  .kit-footer strong {
+    color: var(--sepia);
+    font-size: 1.22rem;
+  }
+
+  .kit-footer button {
+    border: 1px solid rgba(212,175,55,0.24);
+    background: rgba(212,175,55,0.06);
+    color: var(--ink);
+    border-radius: 999px;
+    padding: 0.7rem 1rem;
+    font-weight: 700;
+  }
+
+  .story-band {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1.8rem 1.6rem;
+    border-radius: 28px;
+    background: rgba(26, 22, 18, 0.76);
+    border: 1px solid rgba(212,175,55,0.18);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+  }
+
+  .story-copy {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .story-copy h2 {
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+  }
+
+  .story-points {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 1rem;
+  }
+
+  .story-points div {
+    display: grid;
+    gap: 0.3rem;
+    padding: 1rem 0.8rem;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212,175,55,0.12);
+  }
+
+  .story-points strong {
+    color: var(--sepia);
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .story-points span {
+    color: var(--ink-muted);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .carousel {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .carousel-window {
+    position: relative;
+    height: 440px;
+    perspective: 2200px;
+    overflow: hidden;
+  }
+
+  .character-card {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(18%) scale(0.88) rotateY(-16deg);
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
+  }
+
+  .character-card.is-active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0) scale(1) rotateY(0deg);
+    z-index: 3;
+  }
+
+  .character-card.is-prev {
+    transform: translateX(-12%) scale(0.9) rotateY(16deg);
+    opacity: 0.6;
+    z-index: 2;
+  }
+
+  .character-card.is-next {
+    transform: translateX(12%) scale(0.9) rotateY(-16deg);
+    opacity: 0.6;
+    z-index: 2;
+  }
+
+  .character-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.2,0.8,0.2,1);
+  }
+
+  .character-card.is-flipped .character-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .character-card-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    backface-visibility: hidden;
+    background: rgba(36, 29, 23, 0.9);
+    border: 1px solid rgba(212,175,55,0.18);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+    overflow: hidden;
+  }
+
+  .character-card-front {
+    padding: 1rem;
+  }
+
+  .character-card-front::before,
+  .character-card-back::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06), transparent 35%, rgba(212,175,55,0.08));
+  }
+
+  .portrait {
+    position: relative;
+    z-index: 1;
+    height: 300px;
+    border-radius: 18px;
+    background-size: cover;
+    background-position: center 20%;
+    border: 1px solid rgba(212,175,55,0.18);
+    margin-top: 0.8rem;
+    transform: translateY(18px);
+  }
+
+  .front-copy {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.2rem;
+    margin-top: 1rem;
+  }
+
+  .front-copy p {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .front-copy h3,
+  .character-card-back h3 {
+    font-size: 2rem;
+  }
+
+  .stat-row {
+    position: relative;
+    z-index: 1;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0.9rem 0 0;
+  }
+
+  .stat-row li {
+    padding: 0.45rem 0.72rem;
+    border-radius: 999px;
+    background: rgba(212,175,55,0.06);
+    border: 1px solid rgba(212,175,55,0.13);
+    color: var(--ink-muted);
+    font-size: 0.8rem;
+  }
+
+  .character-card-back {
+    transform: rotateY(180deg);
+    padding: 1.2rem;
+    display: grid;
+    align-content: center;
+    gap: 1rem;
+  }
+
+  .back-label {
+    width: fit-content;
+  }
+
+  .character-card-back p {
+    font-size: 1rem;
+  }
+
+  .back-meta {
+    justify-content: flex-start;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sepia-strong);
+  }
+
+  .carousel-control {
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid rgba(212,175,55,0.2);
+    background: rgba(212,175,55,0.06);
+    border-radius: 50%;
+    color: var(--ink);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+
+  .indicator {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid rgba(212,175,55,0.2);
+    background: transparent;
+    color: var(--ink-muted);
+    cursor: pointer;
+  }
+
+  .indicator.is-active {
+    background: rgba(212,175,55,0.14);
+    color: var(--ink);
+    border-color: rgba(212,175,55,0.32);
+  }
+
+  .kit-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+
+  .kit-modal.is-open {
+    display: flex;
+  }
+
+  .kit-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 9, 8, 0.7);
+    backdrop-filter: blur(6px);
+  }
+
+  .kit-modal-panel {
+    position: relative;
+    width: min(560px, calc(100% - 2rem));
+    padding: 1.5rem;
+    border-radius: 28px;
+    background: linear-gradient(180deg, rgba(36,29,23,0.96), rgba(22,18,15,0.94));
+    border: 1px solid rgba(212,175,55,0.22);
+    box-shadow: 0 26px 65px rgba(0,0,0,0.4);
+    z-index: 1;
+  }
+
+  .kit-modal-badge {
+    display: inline-flex;
+    padding: 0.34rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(212,175,55,0.1);
+    border: 1px solid rgba(212,175,55,0.18);
+    color: var(--sepia-strong);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .kit-modal-panel h3 {
+    margin-top: 0.9rem;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+  }
+
+  .kit-modal-panel p {
+    margin-top: 0.8rem;
+    color: var(--ink-muted);
+  }
+
+  .kit-modal-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-top: 1.1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(212,175,55,0.12);
+    color: var(--ink-muted);
+    font-size: 0.82rem;
+  }
+
+  .kit-modal-meta span:first-child {
+    color: var(--sepia);
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .kit-modal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+
+  .kit-modal-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border: 1px solid rgba(212,175,55,0.18);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.02);
+    color: var(--ink);
+    font-size: 1.4rem;
+    cursor: pointer;
+  }
+
+  .secondary-button.is-light {
+    background: rgba(255,255,255,0.02);
+  }
+
+  .newsletter-shell {
+    padding-top: 2rem;
+  }
+
+  .newsletter-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+    padding: 1.6rem;
+    border-radius: 28px;
+    border: 1px solid rgba(212,175,55,0.18);
+    background:
+      linear-gradient(135deg, rgba(22,18,15,0.9), rgba(42,34,26,0.84)),
+      rgba(26,22,18,0.8);
+    box-shadow: 0 24px 45px rgba(0,0,0,0.18);
+  }
+
+  .newsletter-copy {
+    display: grid;
+    gap: 0.9rem;
+    align-content: center;
+  }
+
+  .newsletter-copy h2 {
+    font-size: clamp(2rem, 4vw, 3.1rem);
+  }
+
   .newsletter-form {
     display: grid;
     gap: 1rem;
+    align-content: center;
+    padding: 1.1rem;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212,175,55,0.12);
   }
 
   .newsletter-form label {
     display: grid;
-    gap: 0.5rem;
+    gap: 0.45rem;
   }
 
-  .newsletter-form span {
+  .newsletter-form label span {
     color: var(--ink);
-    font-weight: 700;
     font-size: 0.92rem;
+    font-weight: 700;
   }
 
   .newsletter-form input {
     width: 100%;
     padding: 0.9rem 1rem;
-    border-radius: 12px;
-    border: 1px solid rgba(212, 175, 55, 0.18);
-    background: rgba(255, 255, 255, 0.02);
+    border-radius: 14px;
+    border: 1px solid rgba(212,175,55,0.2);
+    background: rgba(255,255,255,0.02);
     color: var(--ink);
     font: inherit;
   }
 
   .newsletter-form input:focus {
-    outline: 2px solid rgba(212, 175, 55, 0.4);
-    outline-offset: 2px;
+    outline: 2px solid rgba(212,175,55,0.3);
+    outline-offset: 1px;
+  }
+
+  .newsletter-form button {
+    width: fit-content;
+    border: none;
+    cursor: pointer;
   }
 
   .form-status {
     min-height: 1.5rem;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 700;
     color: var(--ink-muted);
   }
 
   .form-status.success {
-    color: var(--success);
+    color: #b8e0b5;
   }
 
   .form-status.error {
-    color: var(--danger);
+    color: #f2b39a;
   }
 
   .site-footer {
     width: min(1200px, calc(100% - 2rem));
     margin: 0 auto 2rem;
-    border-top: 1px solid rgba(212, 175, 55, 0.15);
     padding-top: 1.5rem;
+    border-top: 1px solid rgba(212,175,55,0.12);
   }
 
   .footer-top,
   .footer-bottom {
     display: flex;
-    align-items: flex-start;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .footer-top {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
   }
 
   .footer-brand {
-    margin-bottom: 0.85rem;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 2rem;
+    margin-bottom: 0.8rem;
   }
 
   .footer-links h3 {
-    margin-bottom: 0.75rem;
-    font-size: 0.96rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    margin: 0 0 0.7rem;
     color: var(--sepia-strong);
+    font-size: 0.84rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   .footer-links ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: grid;
     gap: 0.5rem;
+    padding: 0;
+    margin: 0;
     color: var(--ink-muted);
   }
 
   .footer-bottom {
     padding-top: 1rem;
-    border-top: 1px solid rgba(212, 175, 55, 0.12);
+    border-top: 1px solid rgba(212,175,55,0.1);
     color: var(--ink-muted);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
   }
 
-  @media (max-width: 900px) {
-    .pillars-grid,
-    .roles-grid,
-    .newsletter-section,
-    .hero {
+  @keyframes floatCard {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @media (max-width: 960px) {
+    .hero,
+    .story-band,
+    .newsletter-panel {
       grid-template-columns: 1fr;
+    }
+
+    .kits-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .topnav {
       display: none;
     }
-
-    .topbar {
-      justify-content: space-between;
-    }
-
-    .role-card {
-      grid-template-columns: 1fr;
-    }
-
-    .role-content {
-      padding-right: 0;
-      margin-bottom: 1rem;
-    }
-
-    .role-image-wrap {
-      min-height: 180px;
-      border-left: none;
-      border-top: 1px solid rgba(212, 175, 55, 0.16);
-    }
-
-    .role-image-wrap::before {
-      background: linear-gradient(
-        180deg,
-        rgba(33, 27, 22, 0.98) 0%,
-        rgba(33, 27, 22, 0.78) 20%,
-        rgba(33, 27, 22, 0.35) 50%,
-        rgba(33, 27, 22, 0) 100%
-      );
-    }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 680px) {
+    .page-shell,
+    .site-footer,
+    .topbar {
+      width: min(100% - 1rem, 1200px);
+    }
+
     .topbar {
       padding: 0.9rem 1rem;
     }
@@ -729,6 +1495,31 @@ const roles = [
 
     .hero {
       padding-top: 2.2rem;
+      gap: 1.5rem;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .kits-grid,
+    .story-points {
+      grid-template-columns: 1fr;
+    }
+
+    .carousel {
+      grid-template-columns: 1fr;
+    }
+
+    .carousel-control {
+      display: none;
+    }
+
+    .card-body h2,
+    .front-copy h3,
+    .character-card-back h3 {
+      font-size: 1.5rem;
     }
 
     .footer-top,
