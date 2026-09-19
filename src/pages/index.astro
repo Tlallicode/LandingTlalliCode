@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 
 const kits = [
   {
-    name: 'Kit: El Secreto del Hospicio',
+    name: 'Kit: El Misterio del albazo',
     label: 'Edición limitada',
     description: 'Cinco cartas de personajes, un mapa de ruinas y un token de historia con pistas ocultas.',
-    price: '$170 MXN',
+    price: '$50 MXN',
     accent: 'copper',
     icon: 'N',
   },
@@ -71,16 +71,25 @@ const galleryCards = [
     <section class="hero section-shell" id="hero">
       <div class="hero-copy">
         <span class="hero-tag">Coleccionables históricos · Guadalajara</span>
-        <h1>La historia de la ciudad está en tus manos.</h1>
+        <h1>Juega con la historia de tu ciudad.</h1>
         <p>
-          Descubre kits de exploración, cartas de personajes ilustres y misterios del pasado de
-          Guadalajara listos para coleccionar, jugar y compartir.
+          Explora Guadalajara con una app móvil de geolocalización, resuelve misterios en el mundo real
+          y colecciona kits físicos para llevar cada hallazgo contigo.
         </p>
 
         <div class="hero-actions">
-          <a class="primary-button" href="#kits">Explorar los Kits</a>
+          <a class="primary-button" href="#app">Explorar la App</a>
           <a class="secondary-button" href="#personajes">Conoce a los Personajes</a>
         </div>
+
+        <!--<form class="beta-form" id="beta-form" novalidate>-->
+        <!--  <label for="beta-email">Acceso beta para cronistas</label>-->
+        <!--  <div class="beta-form-row">-->
+        <!--    <input id="beta-email" type="email" name="email" placeholder="tu@correo.com" required />-->
+        <!--    <button class="tech-button" type="submit">Unirme a la Beta</button>-->
+        <!--  </div>-->
+        <!--  <p class="form-status" id="beta-message" aria-live="polite"></p>-->
+        <!--</form>-->
 
         <ul class="hero-stats" aria-label="Estadísticas de la colección">
           <li>
@@ -99,6 +108,30 @@ const galleryCards = [
       </div>
 
       <div class="hero-visual" aria-label="Composición de cartas de colección Nehnemi">
+        <!--<div class="phone-mockup" aria-label="Vista previa de la aplicación Nehnemi">-->
+        <!--  <div class="phone-speaker"></div>-->
+        <!--  <div class="phone-screen">-->
+        <!--    <div class="map-topbar">-->
+        <!--      <span class="map-brand">NEHNEMI</span>-->
+        <!--      <span class="map-signal">GPS · ACTIVO</span>-->
+        <!--    </div>-->
+        <!--    <div class="map-grid"></div>-->
+        <!--    <div class="map-route"></div>-->
+        <!--    <span class="map-pin map-pin&#45;&#45;one">✦</span>-->
+        <!--    <span class="map-pin map-pin&#45;&#45;two">◆</span>-->
+        <!--    <span class="map-pin map-pin&#45;&#45;three">✧</span>-->
+        <!--    <div class="map-card">-->
+        <!--      <span>RUTA DETECTADA</span>-->
+        <!--      <strong>El reloj del Palacio</strong>-->
+        <!--      <small>850 m · 3 fragmentos</small>-->
+        <!--    </div>-->
+        <!--    <div class="phone-nav">-->
+        <!--      <span>Mapa</span>-->
+        <!--      <span>Misiones</span>-->
+        <!--      <span>Insignias</span>-->
+        <!--    </div>-->
+        <!--  </div>-->
+        <!--</div>-->
         <article class="trading-card trading-card--main">
           <div class="card-frame">
             <div class="card-header">
@@ -154,6 +187,35 @@ const galleryCards = [
       </div>
     </section>
 
+    <section class="section-shell app-section" id="app">
+      <div class="section-heading">
+        <span class="eyebrow tech-eyebrow">La app Nehnemi</span>
+        <h2>Juega con la historia, a plena vista.</h2>
+        <p>Explora Guadalajara con geolocalización, pistas narrativas y recompensas que convierten cada recorrido en una partida.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <span class="feature-icon">⌖</span>
+          <span class="feature-number">01 · EXPLORACIÓN GPS</span>
+          <h3>La ciudad es tu tablero</h3>
+          <p>Encuentra puntos de interés, activa rutas y descubre fragmentos cerca de los lugares que ya conoces.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">⊙</span>
+          <span class="feature-number">02 · MISTERIOS</span>
+          <h3>Resuelve lo que otros no ven</h3>
+          <p>Conecta pistas, responde acertijos y reconstruye historias que sobrevivieron entre calles y edificios.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-icon">✦</span>
+          <span class="feature-number">03 · COLECCIONABLES </span>
+          <h3>Recopila tus hallazgos</h3>
+          <p>Gana personajes digitales y desbloquea acceso a áreas, skins y nuevas expediciones.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section-shell" id="kits">
       <div class="section-heading">
         <span class="eyebrow">Nuestros Kits</span>
@@ -182,26 +244,26 @@ const galleryCards = [
       </div>
     </section>
 
-    <section class="story-band" aria-label="Narrativa de Nehnemi">
-      <div class="story-copy">
-        <span class="eyebrow">El universo Nehnemi</span>
-        <h2>No solo juegas; descubres la memoria de la ciudad.</h2>
-      </div>
-      <div class="story-points">
-        <div>
-          <strong>06</strong>
-          <span>historias ocultas</span>
-        </div>
-        <div>
-          <strong>14</strong>
-          <span>lugares reales</span>
-        </div>
-        <div>
-          <strong>∞</strong>
-          <span>misterios por revelar</span>
-        </div>
-      </div>
-    </section>
+    <!--<section class="story-band" aria-label="Narrativa de Nehnemi">-->
+    <!--  <div class="story-copy">-->
+    <!--    <span class="eyebrow">El universo Nehnemi</span>-->
+    <!--    <h2>No solo juegas; descubres la memoria de la ciudad.</h2>-->
+    <!--  </div>-->
+    <!--  <div class="story-points">-->
+    <!--    <div>-->
+    <!--      <strong>06</strong>-->
+    <!--      <span>historias ocultas</span>-->
+    <!--    </div>-->
+    <!--    <div>-->
+    <!--      <strong>14</strong>-->
+    <!--      <span>lugares reales</span>-->
+    <!--    </div>-->
+    <!--    <div>-->
+    <!--      <strong>∞</strong>-->
+    <!--      <span>misterios por revelar</span>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</section>-->
 
     <section class="section-shell" id="personajes">
       <div class="section-heading">
@@ -301,9 +363,32 @@ const galleryCards = [
       <div class="footer-links">
         <div>
           <h3>Redes</h3>
-          <ul>
-            <li><a href="https://instagram.com/tlallicode" target="_blank" rel="noreferrer noopener">Instagram</a></li>
-            <li><a href="mailto:a23310134@ceti.mx">Contacto</a></li>
+          <ul class="social-links">
+            <li>
+              <a class="social-link" href="https://instagram.com/tlallicode" target="_blank" rel="noreferrer noopener">
+                <span class="social-icon social-icon--instagram" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"></rect>
+                    <circle cx="12" cy="12" r="4.1"></circle>
+                    <circle class="social-icon-dot" cx="17.5" cy="6.5" r="1"></circle>
+                  </svg>
+                </span>
+                <span><strong>Instagram</strong><small>@tlallicode</small></span>
+                <span class="social-arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a class="social-link" href="mailto:tlallicode@gmail.com">
+                <span class="social-icon social-icon--mail" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <rect x="3" y="5" width="18" height="14" rx="3"></rect>
+                    <path d="m4.5 7 7.5 6 7.5-6"></path>
+                  </svg>
+                </span>
+                <span><strong>Contacto</strong><small>tlallicode@gmail.com</small></span>
+                <span class="social-arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -350,7 +435,7 @@ const galleryCards = [
       modalLabel.textContent = label;
       modalDescription.textContent = description;
       modalPrice.textContent = price || 'Próximamente';
-      modalIncludes.textContent = name.includes('Secreto')
+      modalIncludes.textContent = name.includes('Misterio')
         ? 'Incluye 3 cartas, un mapa y 1 token de historia'
         : label.includes('Pronto')
           ? 'Disponible próximamente'
@@ -433,6 +518,47 @@ const galleryCards = [
         }
       }
     });
+/*
+    const betaForm = document.querySelector<HTMLFormElement>('#beta-form');
+    const betaMessage = document.querySelector('#beta-message');
+
+    betaForm?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const email = String(new FormData(betaForm).get('email') ?? '').trim();
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (betaMessage) {
+          betaMessage.textContent = 'Escribe un correo válido para recibir acceso beta.';
+          betaMessage.className = 'form-status error';
+        }
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: 'Cronista Beta', email }),
+        });
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(result.error || 'No pudimos reservar tu acceso beta.');
+        }
+
+        if (betaMessage) {
+          betaMessage.textContent = 'Acceso reservado. El primer misterio llegará a tu correo.';
+          betaMessage.className = 'form-status success';
+        }
+        betaForm.reset();
+      } catch (error) {
+        if (betaMessage) {
+          betaMessage.textContent = error instanceof Error ? error.message : 'Ocurrió un problema inesperado.';
+          betaMessage.className = 'form-status error';
+        }
+      }
+    });
+*/
 
     const cards = Array.from(document.querySelectorAll('.character-card'));
     const indicators = Array.from(document.querySelectorAll<HTMLElement>('.indicator'));
@@ -473,6 +599,76 @@ const galleryCards = [
       });
     });
 
+    const carouselWindow = document.querySelector<HTMLElement>('.carousel-window');
+    let carouselTouchStartX = 0;
+    let carouselTouchStartY = 0;
+
+    carouselWindow?.addEventListener(
+      'touchstart',
+      (event) => {
+        const touch = event.changedTouches[0];
+        carouselTouchStartX = touch.clientX;
+        carouselTouchStartY = touch.clientY;
+      },
+      { passive: true },
+    );
+
+    carouselWindow?.addEventListener(
+      'touchend',
+      (event) => {
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - carouselTouchStartX;
+        const deltaY = touch.clientY - carouselTouchStartY;
+
+        if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+        renderCarousel(activeIndex + (deltaX < 0 ? 1 : -1));
+      },
+      { passive: true },
+    );
+
+    const heroVisual = document.querySelector<HTMLElement>('.hero-visual');
+    const heroFocusTargets = Array.from(
+      document.querySelectorAll<HTMLElement>('.hero-visual .phone-mockup, .hero-visual .trading-card'),
+    );
+    let heroFocusIndex = 0;
+    let heroTouchStartX = 0;
+    let heroTouchStartY = 0;
+
+    function focusHeroTarget(nextIndex: number) {
+      heroFocusIndex = (nextIndex + heroFocusTargets.length) % heroFocusTargets.length;
+      heroFocusTargets.forEach((target, index) => {
+        target.classList.toggle('is-focused', index === heroFocusIndex);
+      });
+    }
+
+    heroFocusTargets.forEach((target, index) => {
+      target.addEventListener('click', () => focusHeroTarget(index));
+    });
+
+    heroVisual?.addEventListener(
+      'touchstart',
+      (event) => {
+        const touch = event.changedTouches[0];
+        heroTouchStartX = touch.clientX;
+        heroTouchStartY = touch.clientY;
+      },
+      { passive: true },
+    );
+
+    heroVisual?.addEventListener(
+      'touchend',
+      (event) => {
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - heroTouchStartX;
+        const deltaY = touch.clientY - heroTouchStartY;
+
+        if (Math.abs(deltaX) < 45 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+        focusHeroTarget(heroFocusIndex + (deltaX < 0 ? 1 : -1));
+      },
+      { passive: true },
+    );
+
+    focusHeroTarget(0);
     renderCarousel(0);
   </script>
 </Layout>
@@ -631,6 +827,72 @@ const galleryCards = [
     color: var(--ink-muted);
   }
 
+  .hero-tag,
+  .tech-eyebrow,
+  .feature-number {
+    color: #00f2fe;
+    border-color: rgba(0, 242, 254, 0.28);
+    background: rgba(0, 242, 254, 0.06);
+  }
+
+  .beta-form {
+    display: grid;
+    gap: 0.55rem;
+    max-width: 540px;
+    margin-top: 0.25rem;
+    padding: 1rem;
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    border-radius: 18px;
+    background: rgba(8, 27, 29, 0.48);
+    box-shadow: inset 0 0 22px rgba(0, 242, 254, 0.04);
+  }
+
+  .beta-form label {
+    color: #9afaff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .beta-form-row {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .beta-form input {
+    min-width: 0;
+    flex: 1;
+    padding: 0.82rem 0.95rem;
+    border: 1px solid rgba(0, 242, 254, 0.24);
+    border-radius: 12px;
+    background: rgba(3, 15, 17, 0.7);
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .beta-form input:focus {
+    outline: 2px solid rgba(0, 242, 254, 0.35);
+    outline-offset: 1px;
+  }
+
+  .tech-button {
+    border: 1px solid rgba(0, 242, 254, 0.42);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    background: #00f2fe;
+    color: #071719;
+    cursor: pointer;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 0 22px rgba(0, 242, 254, 0.16);
+  }
+
+  .tech-button:hover {
+    background: #8bfbff;
+    transform: translateY(-1px);
+  }
+
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
@@ -680,6 +942,7 @@ const galleryCards = [
       linear-gradient(180deg, rgba(34, 28, 22, 0.82), rgba(18, 15, 13, 0.85));
     overflow: hidden;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 30px 55px rgba(0,0,0,0.25);
+    touch-action: pan-y;
   }
 
   .hero-visual::before {
@@ -691,6 +954,153 @@ const galleryCards = [
     filter: blur(12px);
   }
 
+  .phone-mockup {
+    position: absolute;
+    right: 8%;
+    top: 10%;
+    z-index: 1;
+    width: min(210px, 43%);
+    aspect-ratio: 0.49;
+    padding: 0.55rem;
+    border: 2px solid rgba(0, 242, 254, 0.55);
+    border-radius: 30px;
+    background: linear-gradient(145deg, #182c2e, #071719);
+    box-shadow: 0 0 35px rgba(0, 242, 254, 0.15), 0 25px 45px rgba(0, 0, 0, 0.35);
+    transform: rotate(7deg);
+    transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+    cursor: pointer;
+  }
+
+  .phone-mockup.is-focused {
+    z-index: 8;
+    transform: rotate(0deg) scale(1.06) translateY(-8px);
+    box-shadow: 0 0 42px rgba(0, 242, 254, 0.3), 0 28px 55px rgba(0, 0, 0, 0.42);
+  }
+
+  .phone-speaker {
+    position: absolute;
+    top: 0.45rem;
+    left: 50%;
+    width: 35%;
+    height: 0.22rem;
+    border-radius: 99px;
+    background: rgba(0, 242, 254, 0.35);
+    transform: translateX(-50%);
+  }
+
+  .phone-screen {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 23px;
+    background: #081719;
+    border: 1px solid rgba(0, 242, 254, 0.22);
+  }
+
+  .map-topbar,
+  .phone-nav {
+    position: absolute;
+    left: 0.65rem;
+    right: 0.65rem;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    font-size: 0.46rem;
+    letter-spacing: 0.08em;
+  }
+
+  .map-topbar {
+    top: 1rem;
+    color: #9afaff;
+  }
+
+  .map-signal {
+    color: #6cf8b5;
+  }
+
+  .map-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.7;
+    background:
+      linear-gradient(30deg, transparent 45%, rgba(0, 242, 254, 0.18) 46%, transparent 47%),
+      linear-gradient(120deg, transparent 45%, rgba(0, 242, 254, 0.12) 46%, transparent 47%),
+      repeating-linear-gradient(90deg, transparent 0 24px, rgba(0, 242, 254, 0.1) 25px, transparent 26px),
+      repeating-linear-gradient(0deg, transparent 0 30px, rgba(0, 242, 254, 0.08) 31px, transparent 32px);
+  }
+
+  .map-route {
+    position: absolute;
+    top: 30%;
+    left: 18%;
+    width: 55%;
+    height: 35%;
+    border-left: 2px solid #00f2fe;
+    border-bottom: 2px solid #00f2fe;
+    border-radius: 0 0 0 70px;
+    transform: rotate(-22deg);
+    filter: drop-shadow(0 0 5px #00f2fe);
+  }
+
+  .map-pin {
+    position: absolute;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid #00f2fe;
+    border-radius: 50%;
+    color: #00f2fe;
+    background: rgba(0, 242, 254, 0.12);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.65);
+    font-size: 0.75rem;
+  }
+
+  .map-pin--one { top: 28%; left: 55%; }
+  .map-pin--two { top: 49%; left: 24%; color: #d4af37; border-color: #d4af37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.55); }
+  .map-pin--three { top: 62%; right: 18%; }
+
+  .map-card {
+    position: absolute;
+    right: 0.65rem;
+    bottom: 2.8rem;
+    left: 0.65rem;
+    z-index: 2;
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.7rem;
+    border: 1px solid rgba(0, 242, 254, 0.24);
+    border-radius: 12px;
+    background: rgba(5, 20, 21, 0.88);
+  }
+
+  .map-card span,
+  .map-card small {
+    color: #79eff3;
+    font-size: 0.45rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .map-card strong {
+    color: var(--ink);
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+  }
+
+  .phone-nav {
+    right: 0.8rem;
+    bottom: 0.85rem;
+    left: 0.8rem;
+    color: rgba(154, 250, 255, 0.7);
+  }
+
+  .phone-nav span:first-child {
+    color: #00f2fe;
+  }
+
   .trading-card {
     position: absolute;
     width: min(270px, 55vw);
@@ -700,6 +1110,26 @@ const galleryCards = [
     animation: floatCard 6s ease-in-out infinite;
     z-index: 2;
     perspective: 1200px;
+    cursor: pointer;
+    transition: filter 0.35s ease;
+  }
+
+  .trading-card.is-focused {
+    z-index: 9;
+    animation: none;
+    filter: brightness(1.12) drop-shadow(0 0 18px rgba(212, 175, 55, 0.26));
+  }
+
+  .trading-card--main.is-focused {
+    transform: rotate(-2deg) scale(1.06) translateY(-10px);
+  }
+
+  .trading-card--left.is-focused {
+    transform: rotate(-5deg) scale(1.04) translateY(-8px);
+  }
+
+  .trading-card--right.is-focused {
+    transform: rotate(4deg) scale(1.04) translateY(-8px);
   }
 
   .trading-card--main {
@@ -894,6 +1324,58 @@ const galleryCards = [
     font-size: clamp(2rem, 3vw, 3rem);
   }
 
+  .section-heading > p {
+    max-width: 680px;
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .feature-card {
+    display: grid;
+    gap: 0.85rem;
+    min-height: 250px;
+    padding: 1.35rem;
+    border: 1px solid rgba(0, 242, 254, 0.14);
+    border-radius: 22px;
+    background: linear-gradient(145deg, rgba(17, 39, 40, 0.7), rgba(35, 29, 23, 0.82));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 18px 35px rgba(0,0,0,0.12);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 242, 254, 0.38);
+  }
+
+  .feature-icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid rgba(0, 242, 254, 0.35);
+    border-radius: 14px;
+    color: #00f2fe;
+    background: rgba(0, 242, 254, 0.08);
+    font-size: 1.5rem;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.1);
+  }
+
+  .feature-number {
+    width: fit-content;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .feature-card h3 {
+    color: var(--ink);
+    font-size: 1.45rem;
+  }
+
   .kits-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -908,6 +1390,13 @@ const galleryCards = [
     background: rgba(35, 29, 23, 0.86);
     border: 1px solid rgba(212, 175, 55, 0.18);
     box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+    perspective: 1000px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .kit-card:hover {
+    transform: translateY(-6px) rotateX(2deg) rotateY(-2deg);
+    border-color: rgba(212, 175, 55, 0.42);
   }
 
   .kit-art {
@@ -1052,6 +1541,12 @@ const galleryCards = [
     height: 440px;
     perspective: 2200px;
     overflow: hidden;
+    touch-action: pan-y;
+    cursor: grab;
+  }
+
+  .carousel-window:active {
+    cursor: grabbing;
   }
 
   .character-card {
@@ -1445,6 +1940,93 @@ const galleryCards = [
     color: var(--ink-muted);
   }
 
+  .social-links {
+    min-width: min(100%, 285px);
+    gap: 0.7rem !important;
+  }
+
+  .social-link {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 3.5rem;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid rgba(212, 175, 55, 0.13);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.07), rgba(255, 255, 255, 0.015));
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .social-link:hover {
+    transform: translateX(4px);
+    border-color: rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.14), rgba(0, 242, 254, 0.04));
+  }
+
+  .social-icon {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 12px;
+    color: var(--sepia);
+    background: rgba(212, 175, 55, 0.11);
+    border: 1px solid rgba(212, 175, 55, 0.22);
+  }
+
+  .social-icon--instagram {
+    color: #f2c26b;
+    background: linear-gradient(145deg, rgba(214, 74, 143, 0.18), rgba(212, 175, 55, 0.12));
+    border-color: rgba(214, 74, 143, 0.35);
+  }
+
+  .social-icon--mail {
+    color: #8ff8ff;
+    background: rgba(0, 242, 254, 0.08);
+    border-color: rgba(0, 242, 254, 0.24);
+  }
+
+  .social-icon svg {
+    width: 1.35rem;
+    height: 1.35rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+  }
+
+  .social-icon-dot {
+    fill: currentColor;
+    stroke: none;
+  }
+
+  .social-link strong,
+  .social-link small {
+    display: block;
+  }
+
+  .social-link strong {
+    color: var(--ink);
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .social-link small {
+    margin-top: 0.2rem;
+    color: var(--ink-muted);
+    font-size: 0.7rem;
+    line-height: 1.2;
+  }
+
+  .social-arrow {
+    align-self: start;
+    color: var(--sepia-strong);
+    font-size: 1.05rem;
+    line-height: 1;
+  }
+
   .footer-bottom {
     padding-top: 1rem;
     border-top: 1px solid rgba(212,175,55,0.1);
@@ -1473,6 +2055,10 @@ const galleryCards = [
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .feature-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .topnav {
       display: none;
     }
@@ -1498,13 +2084,124 @@ const galleryCards = [
       gap: 1.5rem;
     }
 
+    .hero h1 {
+      max-width: 100%;
+      font-size: clamp(2rem, 11vw, 3.15rem);
+      line-height: 0.98;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-copy p {
+      max-width: 34rem;
+      font-size: clamp(0.98rem, 4.2vw, 1.08rem);
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .hero-actions a {
+      width: 100%;
+      text-align: center;
+    }
+
+    .beta-form-row {
+      flex-direction: column;
+    }
+
+    .tech-button {
+      width: 100%;
+    }
+
+    .phone-mockup {
+      right: 8%;
+      top: 6%;
+      width: min(145px, 40%);
+    }
+
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+    }
+
+    .hero-stats li {
+      min-width: 0;
+      padding: 0.65rem 0.5rem;
+      border-radius: 13px;
+    }
+
+    .hero-stats strong {
+      font-size: clamp(1.05rem, 5vw, 1.4rem);
+      overflow-wrap: anywhere;
+    }
+
+    .hero-stats span {
+      font-size: clamp(0.55rem, 2.2vw, 0.7rem);
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .hero-visual {
+      min-height: 410px;
+      border-radius: 24px;
+    }
+
+    .trading-card {
+      width: min(190px, 51vw);
+    }
+
+    .trading-card--main {
+      right: 10%;
+      bottom: 20px;
+    }
+
+    .trading-card--left {
+      left: 2%;
+      bottom: 22px;
+    }
+
+    .trading-card--right {
+      right: 2%;
+      top: 24px;
+    }
+
+    .floating-badge {
+      top: 13px;
+      left: 13px;
+      right: auto;
+      padding: 0.5rem 0.6rem;
+    }
+
+    .floating-badge span {
+      font-size: 0.48rem;
+    }
+
+    .floating-badge strong {
+      font-size: 0.95rem;
+    }
+
+    .card-frame {
+      padding: 0.65rem;
+    }
+
+    .card-art {
+      margin-top: 0.55rem;
+    }
+
+    .card-body {
+      margin-top: 0.55rem;
+    }
+
+    .card-body h2 {
+      font-size: clamp(0.95rem, 4vw, 1.25rem);
     }
 
     .kits-grid,
-    .story-points {
+    .story-points,
+    .feature-grid {
       grid-template-columns: 1fr;
     }
 
@@ -1516,10 +2213,45 @@ const galleryCards = [
       display: none;
     }
 
+    .carousel-window {
+      height: 390px;
+    }
+
+    .character-card-front {
+      padding: 0.75rem;
+    }
+
+    .portrait {
+      height: 225px;
+      margin-top: 0.55rem;
+      transform: translateY(8px);
+      background-position: center 18%;
+    }
+
+    .front-copy {
+      margin-top: 0.7rem;
+    }
+
+    .stat-row {
+      margin-top: 0.6rem;
+      gap: 0.35rem;
+    }
+
+    .stat-row li {
+      padding: 0.35rem 0.55rem;
+      font-size: 0.68rem;
+    }
+
     .card-body h2,
     .front-copy h3,
     .character-card-back h3 {
       font-size: 1.5rem;
+    }
+
+    .front-copy h3,
+    .character-card-back h3 {
+      font-size: clamp(1.35rem, 7vw, 1.8rem);
+      overflow-wrap: anywhere;
     }
 
     .footer-top,
